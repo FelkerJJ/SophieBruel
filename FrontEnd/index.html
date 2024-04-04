@@ -15,7 +15,7 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<li>projetssssss</li>
+			<li>projets</li>
 			<li>contact</li>
 			<li>login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -131,13 +131,59 @@
 			}		
 		});
 
-		return response.json(); // transforme la réponse JSON reçue en objet JavaScript nat
+		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
 	}
 
 	getCategories().then((categories) => {
   		console.log(categories); // Les données JSON analysées par l'appel `donnees.json()`
 	});
 
+	async function getAppartments() {
+		const response = await fetch('http://localhost:5678/api/categories', {
+			method: "GET",	
+			headers: {
+				"Content-Type": "application/json",
+			}		
+		});
+
+		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
+	}
+
+	getAppartments().then((appartments) => {
+  		console.log(appartments); // Les données JSON analysées par l'appel `donnees.json()`
+	});
+
+	async function getItems() {
+        const response = await fetch('http://localhost:5678/api/categories', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+
+        const works = await response.json();
+        console.log(works);
+		return works;
+	}
+
+    getItems().then((items) => {
+        console.log(items);
+	});
+
+	async function getHotels() {
+		const response = await fetch('http://localhost:5678/api/categories', {
+			method: "GET",	
+			headers: {
+				"Content-Type": "application/json",
+			}		
+		});
+
+		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
+	}
+
+	getHotels().then((hotels) => {
+  		console.log(hotels); // Les données JSON analysées par l'appel `donnees.json()`
+	});
 </script>
 </body>
 </html>
