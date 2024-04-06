@@ -124,7 +124,7 @@
 
 
 	async function getCategories() {
-		const response = await fetch('http://localhost:5678/api/categories', {
+		const response = await fetch('http://localhost:5678/api/works', {
 			method: "GET",	
 			headers: {
 				"Content-Type": "application/json",
@@ -139,7 +139,7 @@
 	});
 
 	async function getAppartments() {
-		const response = await fetch('http://localhost:5678/api/categories', {
+		const response = await fetch('http://localhost:5678/api/works', {
 			method: "GET",	
 			headers: {
 				"Content-Type": "application/json",
@@ -154,7 +154,7 @@
 	});
 
 	async function getItems() {
-        const response = await fetch('http://localhost:5678/api/categories', {
+        const response = await fetch('http://localhost:5678/api/works', {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -162,7 +162,15 @@
         });
 
         const works = await response.json();
-        console.log(works);
+        	console.log(works);
+		
+		for (let i=0; i < works.length; i++){
+
+			if (works[i].categoryId == 1) {
+			console.log(works[i]);
+			}
+		}
+		
 		return works;
 	}
 
@@ -171,7 +179,7 @@
 	});
 
 	async function getHotels() {
-		const response = await fetch('http://localhost:5678/api/categories', {
+		const response = await fetch('http://localhost:5678/api/works', {
 			method: "GET",	
 			headers: {
 				"Content-Type": "application/json",
