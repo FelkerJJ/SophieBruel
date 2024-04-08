@@ -135,16 +135,15 @@
 
 	getData().then((data) => {
     	try {
-			console.log(data); // Afficher les données récupérées depuis l'API
+			console.log(data);
 
-			// Essayez d'accéder aux propriétés des données et de les afficher
 			const works = data.works;
 			const categories = data.categories;
 			const appartments = data.appartments;
 
-			console.log(works); // Afficher les travaux récupérés
-			console.log(categories); // Afficher les catégories récupérées
-			console.log(appartments); // Afficher les appartements récupérés
+			console.log(works);
+			console.log(categories);
+			console.log(appartments); 
 			
             // Sélectionnez les boutons de filtre
             const filterButtons = document.querySelectorAll(".filters-button button");
@@ -171,8 +170,6 @@
                     });
                 });
             });
-            
-            // Vous pouvez utiliser les données récupérées comme vous le souhaitez ici
         } catch (error) {
             console.error("Erreur lors de l'accès aux données:", error);
         }
