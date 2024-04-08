@@ -36,6 +36,14 @@
 	</section>
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
+		<main class="mainfilters">
+			<div class="filters-button">
+				<button class="all">Tous</button>
+				<button class="objects">Objets</button>
+				<button class="appartments">Appartements</button>					
+				<button class="hotels">Hotels & restaurants</button>
+			</div>
+		</main>
 		<div class="gallery">
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
@@ -107,91 +115,68 @@
 </footer>
 <script src="/Backend/models/index.js"></script>
 <script>
-	async function getWorks() {
-		const response = await fetch('http://localhost:5678/api/works', {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			}
-		});
+    async function getData() {
+        try {
+            const response = await fetch('http://localhost:5678/api/works', {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
 
-		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
-	}
+            const data = await response.json();
 
-	getWorks().then((works) => {
-  		console.log(works); // Les données JSON analysées par l'appel `donnees.json()`
-	});
+            return data; // Retourne toutes les données récupérées depuis l'API
+        } catch (error) {
+            console.error("Erreur lors de la récupération des données:", error);
+            throw error; // Gérer les erreurs ou les propager vers l'appelant
+        }
+    }
 
+	getData().then((data) => {
+    	try {
+			console.log(data); // Afficher les données récupérées depuis l'API
 
-	async function getCategories() {
-		const response = await fetch('http://localhost:5678/api/works', {
-			method: "GET",	
-			headers: {
-				"Content-Type": "application/json",
-			}		
-		});
+			// Essayez d'accéder aux propriétés des données et de les afficher
+			const works = data.works;
+			const categories = data.categories;
+			const appartments = data.appartments;
 
-		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
-	}
+			console.log(works); // Afficher les travaux récupérés
+			console.log(categories); // Afficher les catégories récupérées
+			console.log(appartments); // Afficher les appartements récupérés
+			
+            // Sélectionnez les boutons de filtre
+            const filterButtons = document.querySelectorAll(".filters-button button");
 
-	getCategories().then((categories) => {
-  		console.log(categories); // Les données JSON analysées par l'appel `donnees.json()`
-	});
+            // Ajoutez un gestionnaire d'événements de clic à chaque bouton de filtre
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Récupérez la classe du bouton cliqué
+                    const filterClass = this.classList.value;
+                    
+                    // Sélectionnez tous les éléments de la galerie
+                    const galleryItems = document.querySelectorAll('.gallery figure');
 
-	async function getAppartments() {
-		const response = await fetch('http://localhost:5678/api/works', {
-			method: "GET",	
-			headers: {
-				"Content-Type": "application/json",
-			}		
-		});
-
-		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
-	}
-
-	getAppartments().then((appartments) => {
-  		console.log(appartments); // Les données JSON analysées par l'appel `donnees.json()`
-	});
-
-	async function getItems() {
-        const response = await fetch('http://localhost:5678/api/works', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
-
-        const works = await response.json();
-        	console.log(works);
-		
-		for (let i=0; i < works.length; i++){
-
-			if (works[i].categoryId == 1) {
-			console.log(works[i]);
-			}
-		}
-		
-		return works;
-	}
-
-    getItems().then((items) => {
-        console.log(items);
-	});
-
-	async function getHotels() {
-		const response = await fetch('http://localhost:5678/api/works', {
-			method: "GET",	
-			headers: {
-				"Content-Type": "application/json",
-			}		
-		});
-
-		return response.json(); // transforme la réponse JSON reçue en objet JavaScript natif
-	}
-
-	getHotels().then((hotels) => {
-  		console.log(hotels); // Les données JSON analysées par l'appel `donnees.json()`
-	});
+                    // Parcourez tous les éléments de la galerie
+                    galleryItems.forEach(item => {
+                        // Vérifiez si l'élément a la classe de filtre
+                        if (item.classList.contains(filterClass) || filterClass === 'all') {
+                            // Affichez l'élément si le filtre correspond ou si c'est le bouton "Tous"
+                            item.style.display = 'block';
+                        } else {
+                            // Masquez l'élément s'il ne correspond pas au filtre
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Vous pouvez utiliser les données récupérées comme vous le souhaitez ici
+        } catch (error) {
+            console.error("Erreur lors de l'accès aux données:", error);
+        }
+    });
 </script>
 </body>
 </html>
