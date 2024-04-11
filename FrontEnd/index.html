@@ -38,10 +38,10 @@
 		<h2>Mes Projets</h2>
 		<main class="mainfilters">
 			<div class="filters-button">
-				<button class="all">Tous</button>
-				<button class="objects">Objets</button>
-				<button class="appartments">Appartements</button>					
-				<button class="hotels">Hotels & restaurants</button>
+				<button class="all" data-category-id="all">Tous</button>
+				<button class="objects" data-category-id="all">Objets</button>
+				<button class="appartments" data-category-id="all">Appartements</button>
+				<button class="hotels" data-category-id="0">Hotels & restaurants</button>
 			</div>
 		</main>
 		<div class="gallery">
@@ -114,66 +114,6 @@
 	</nav>
 </footer>
 <script src="/Backend/models/index.js"></script>
-<script>
-    async function getData() {
-        try {
-            const response = await fetch('http://localhost:5678/api/works', {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            });
-
-            const data = await response.json();
-
-            return data; // Retourne toutes les données récupérées depuis l'API
-        } catch (error) {
-            console.error("Erreur lors de la récupération des données:", error);
-            throw error; // Gérer les erreurs ou les propager vers l'appelant
-        }
-    }
-
-	getData().then((data) => {
-    	try {
-			console.log(data);
-
-			const works = data.works;
-			const categories = data.categories;
-			const appartments = data.appartments;
-
-			console.log(works);
-			console.log(categories);
-			console.log(appartments); 
-			
-            // Sélectionnez les boutons de filtre
-            const filterButtons = document.querySelectorAll(".filters-button button");
-
-            // Ajoutez un gestionnaire d'événements de clic à chaque bouton de filtre
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Récupérez la classe du bouton cliqué
-                    const filterClass = this.classList.value;
-                    
-                    // Sélectionnez tous les éléments de la galerie
-                    const galleryItems = document.querySelectorAll('.gallery figure');
-
-                    // Parcourez tous les éléments de la galerie
-                    galleryItems.forEach(item => {
-                        // Vérifiez si l'élément a la classe de filtre
-                        if (item.classList.contains(filterClass) || filterClass === 'all') {
-                            // Affichez l'élément si le filtre correspond ou si c'est le bouton "Tous"
-                            item.style.display = 'block';
-                        } else {
-                            // Masquez l'élément s'il ne correspond pas au filtre
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        } catch (error) {
-            console.error("Erreur lors de l'accès aux données:", error);
-        }
-    });
-</script>
+<script src="/FrontEnd/assets/script.js"></script>
 </body>
 </html>
