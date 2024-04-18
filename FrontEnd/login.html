@@ -17,7 +17,7 @@
 		<ul>
 			<li><a href="index.html">projets</a></li>
 			<li><a href="#"></a>contact</li>
-			<li><a href="login.html" id="login-link">login</a></li>
+			<li><a id="loginButton" href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -26,13 +26,13 @@
 		<div class="group">
 			<div class="login">
 				<h2>Log In</h2>
-				<h3>E-mail</h3><input type="Email">
-				<h4>Mot de passe</h4><input type="text">
-				<button class="connexionbutton">Se connecter</button>
+				<h3>E-mail</h3><input type="email" id="email">
+				<h4>Mot de passe</h4><input type="password" id="password">
+				<button class="connexionbutton" onclick="checkLogin()">Se connecter</button>
 				<a href="forgotpassword" class="forgot-password">Mot de passe oublié</a>
 			</div>
 		</div>
-</main>
+	</main>
 <footer>
 	<nav>
 		<ul>

@@ -355,3 +355,18 @@ nav ul li a:active {
     font-weight: bold; 
     color: #000; 
 }
+
+footer {
+	background-color: white;
+	width: 1440px;
+}
+
+footer nav ul {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2em;
+    background: white;
+    width: 1440px;
+    height: 60px;
+	top: 3372px;
+}
