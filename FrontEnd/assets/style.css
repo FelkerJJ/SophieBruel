@@ -340,7 +340,7 @@ input {
 }
 
 
-/*Hover on menu*/
+/*Hover on Menu*/
 
 nav ul li a {
     text-decoration: none; 
@@ -369,4 +369,45 @@ footer nav ul {
     width: 1440px;
     height: 60px;
 	top: 3372px;
+}
+
+
+/*Dynamic Header Editor*/
+
+.mode-edition {
+	width: 1440px;
+	height: 59px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	line-height: 50px;
+}
+
+
+/*Icon + Modify*/
+
+.modifier-text {
+	display: none;
+    font-family: Work Sans;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.42px;
+    text-align: center;
+    color: #000000;
+    display: inline-block; 
+}
+
+
+.fa-solid {
+	display: none;
+    color: black;
+    font-size: 15px;
+    margin-left: 25px;
+}
+
+.fa-solid,
+.modifier-text {
+	display: none;
+    vertical-align: middle; 
+	margin-right: 5px; 
 }

@@ -9,6 +9,12 @@ async function login(email, password) {
       },
       body: JSON.stringify({ email, password }),
     });
+
+    if (response.ok) {
+      const userData = await response.json();
+      localStorage.setItem('loggedInUser', JSON.stringify(userData));
+    }
+    
     return response.ok;
   } catch (error) {
     console.error("Erreur lors de la connexion:", error);
@@ -33,3 +39,6 @@ function checkLogin() {
       console.error("Erreur lors de la vérification de la connexion:", error);
     });
 }
+
+
+

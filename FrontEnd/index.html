@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="/FrontEnd/assets/script.js" defer></script>
@@ -14,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8/dist/jsonwebtoken.min.js"></script>
 </head>
 <body>
+    <div id="modeEdition" class="mode-edition">Mode édition</div>
 <header>
     <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
     <nav>
@@ -39,8 +41,8 @@
         </article>
     </div>
     <section id="portfolio">
-        <h2>Mes Projets</h2>
-        <div class="mainfilters">
+        <h2>Mes Projets<i class="fa-solid fa-pen-to-square"></i> <span class="modifier-text">modifier</span></a></h2>
+            <div class="mainfilters">
             <div class="filters-button">
                 <button class="all" data-category-id="all">Tous</button>
                 <button class="objects" data-category-id="1">Objets</button>
