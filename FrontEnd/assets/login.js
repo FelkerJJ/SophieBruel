@@ -30,6 +30,8 @@ function checkLogin() {
     .then((success) => {
       if (success) {
         document.getElementById('loginButton').innerText = 'logout';
+        document.getElementById('modeEdition').style.display = 'block'; 
+        document.querySelector('.fa-pen-to-square').style.display = 'none';
         window.location.href = "index.html";
       } else {
         alert('Erreur dans l’identifiant ou le mot de passe');

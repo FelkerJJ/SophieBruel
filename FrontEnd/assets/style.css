@@ -384,13 +384,14 @@ footer nav ul {
 	color: white;
 	text-align: center;
 	line-height: 50px;
+	display: none; 
 }
 
 
 /*MyProject :Icon + Modify*/
 
 .modifier-text {
-	display: ;
+	display: none;
     font-family: Work Sans;
     font-size: 14px;
     font-weight: 400;
@@ -402,7 +403,7 @@ footer nav ul {
 
 
 .fa-solid {
-	display: ;
+	display: none;
     color: black;
     font-size: 15px;
     margin-left: 25px;
@@ -410,7 +411,7 @@ footer nav ul {
 
 .fa-solid,
 .modifier-text {
-	display: ;
+	display: none;
     vertical-align: middle; 
 	margin-right: 5px; 
 }
