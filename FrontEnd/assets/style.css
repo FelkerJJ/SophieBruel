@@ -357,8 +357,11 @@ nav ul li a:active {
 }
 
 footer {
-	background-color: white;
-	width: 1440px;
+	display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 footer nav ul {
@@ -384,10 +387,10 @@ footer nav ul {
 }
 
 
-/*Icon + Modify*/
+/*MyProject :Icon + Modify*/
 
 .modifier-text {
-	display: none;
+	display: ;
     font-family: Work Sans;
     font-size: 14px;
     font-weight: 400;
@@ -399,7 +402,7 @@ footer nav ul {
 
 
 .fa-solid {
-	display: none;
+	display: ;
     color: black;
     font-size: 15px;
     margin-left: 25px;
@@ -407,7 +410,22 @@ footer nav ul {
 
 .fa-solid,
 .modifier-text {
-	display: none;
+	display: ;
     vertical-align: middle; 
 	margin-right: 5px; 
+}
+
+/*HeaderBloc :Icon + Modify*/
+
+
+.editorbloc {
+	display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.editorbloc .fa-solid {
+	color: white;
 }
