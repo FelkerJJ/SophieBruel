@@ -12,7 +12,7 @@ async function login(email, password) {
 
     if (response.ok) {
       const userData = await response.json();
-      localStorage.setItem('loggedInUser', JSON.stringify(userData));
+      saveSession(userData);
     }
     
     return response.ok;
@@ -22,25 +22,27 @@ async function login(email, password) {
   }
 }
 
+function saveSession(userData) {
+  localStorage.setItem('loggedInUser', JSON.stringify(userData));
+}
+
 function checkLogin() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
   login(email, password)
-    .then((success) => {
-      if (success) {
-        document.getElementById('loginButton').innerText = 'logout';
-        document.getElementById('modeEdition').style.display = 'block'; 
-        document.querySelector('.fa-pen-to-square').style.display = 'none';
-        window.location.href = "index.html";
-      } else {
-        alert('Erreur dans l’identifiant ou le mot de passe');
-      }
-    })
-    .catch((error) => {
-      console.error("Erreur lors de la vérification de la connexion:", error);
-    });
+  .then((success) => {
+    if (success) {
+      document.getElementById('loginButton').innerText = 'logout';
+      document.getElementById('modeEdition').style.display = 'block';
+      //window.location.href = 'index.html';//
+    } else {
+      alert('Erreur dans l’identifiant ou le mot de passe');
+    }
+  })
+  .catch((error) => {
+    console.error("Erreur lors de la vérification de la connexion:", error);
+  });
+
+console.log(checkLogin);
 }
-
-
-
