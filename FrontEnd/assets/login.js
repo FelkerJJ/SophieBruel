@@ -1,3 +1,16 @@
+const isSomeoneLoggedIn = getSession();
+
+if(isSomeoneLoggedIn) {
+  const loginLink = document.getElementById("login-link");
+
+  if(loginLink) {
+    document.getElementById('login-link').innerText = 'logout';
+    document.getElementById('login-link').id = 'logout-link';
+    document.getElementById('modeEdition').style.display = 'block';
+  }
+  
+}
+
 async function login(email, password) {
   const API_URL = "http://localhost:5678/api/users/login";
 
@@ -9,13 +22,9 @@ async function login(email, password) {
       },
       body: JSON.stringify({ email, password }),
     });
-
-    if (response.ok) {
-      const userData = await response.json();
-      saveSession(userData);
-    }
     
-    return response.ok;
+    return await response.json();
+
   } catch (error) {
     console.error("Erreur lors de la connexion:", error);
     throw error;
@@ -31,11 +40,10 @@ function checkLogin() {
   const password = document.getElementById('password').value;
 
   login(email, password)
-  .then((success) => {
-    if (success) {
-      document.getElementById('loginButton').innerText = 'logout';
-      document.getElementById('modeEdition').style.display = 'block';
-      //window.location.href = 'index.html';//
+  .then((response) => {
+    if (response) {
+      saveSession(response);
+      window.location.href = 'index.html';
     } else {
       alert('Erreur dans l’identifiant ou le mot de passe');
     }
@@ -44,5 +52,18 @@ function checkLogin() {
     console.error("Erreur lors de la vérification de la connexion:", error);
   });
 
-console.log(checkLogin);
+}
+
+function getSession(userData) {
+  return localStorage.getItem('loggedInUser');
+}
+
+const logoutLink = document.getElementById("logout-link");
+
+if(logoutLink) {
+  document.getElementById('logout-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    localStorage.clear();
+    window.location.href = 'login.html';
+  });
 }

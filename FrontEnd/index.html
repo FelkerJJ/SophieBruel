@@ -24,7 +24,7 @@
         <ul>
             <li><a class="active" href="index.html">projets</a></li>
             <li>contact</li>
-            <li><a href="#" id="login-link">login</a></li>
+            <li><a href="login.html" id="login-link">login</a></li>
             <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
         </ul>
     </nav>
@@ -76,20 +76,5 @@
         </ul>
     </nav>
 </footer>
-
-<!-- JavaScript pour charger dynamiquement la page de connexion -->
-<script>
-    document.getElementById('login-link').addEventListener('click', function(event) {
-        event.preventDefault(); // Empêcher le rechargement de la page
-
-        // Charger le contenu de login.html dans une zone spécifique de la page
-        fetch('login.html')
-            .then(response => response.text())
-            .then(html => {
-                document.body.innerHTML = html; // Remplacez tout le contenu de la page par le contenu de login.html
-            })
-            .catch(error => console.error('Erreur de chargement de la page de connexion :', error));
-    });
-</script>
 </body>
 </html>
