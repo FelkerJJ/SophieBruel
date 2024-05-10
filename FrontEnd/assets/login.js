@@ -1,5 +1,7 @@
+// Vérifie si une session utilisateur est active
 const isSomeoneLoggedIn = getSession();
 
+// Si la session est active 
 if(isSomeoneLoggedIn) {
   const loginLink = document.getElementById("login-link");
 
@@ -18,10 +20,10 @@ if(isSomeoneLoggedIn) {
     modifierTextElements.forEach(element => {
         element.style.display = 'inline-block'; 
     });
+  }
 }
 
-}
-
+// Effectue une requête "Post" et récupère les ID (Mdp + Login)
 async function login(email, password) {
   const API_URL = "http://localhost:5678/api/users/login";
 
@@ -42,10 +44,12 @@ async function login(email, password) {
   }
 }
 
+// Enregistre les données de session utilisateur dans le stockage local
 function saveSession(userData) {
   localStorage.setItem('loggedInUser', JSON.stringify(userData));
 }
 
+// Vérifie les identifiants de connexion et redirige si la connexion est réussit
 function checkLogin() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
@@ -63,12 +67,13 @@ function checkLogin() {
       }});
 }
 
+// Récupère les données de session utilisateur du stockage local
 function getSession(userData) {
   return localStorage.getItem('loggedInUser');
 }
 
+// Gestionnaire d'événement pour la déconnexion
 const logoutLink = document.getElementById("logout-link");
-
 if(logoutLink) {
   document.getElementById('logout-link').addEventListener('click', function(event) {
     event.preventDefault();
