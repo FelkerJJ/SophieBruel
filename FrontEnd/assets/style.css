@@ -398,19 +398,17 @@ footer nav ul {
     line-height: 16.42px;
     text-align: center;
     color: #000000;
-    display: inline-block; 
 }
 
 
-.fa-solid {
+h2 .fa-solid {
 	display: none;
     color: black;
     font-size: 15px;
     margin-left: 25px;
 }
 
-.fa-solid,
-.modifier-text {
+h2 .fa-solid {
 	display: none;
     vertical-align: middle; 
 	margin-right: 5px; 

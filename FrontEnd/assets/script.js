@@ -1,4 +1,4 @@
-let allWorks = []; // Variable globale pour stocker toutes les œuvres
+let allWorks = []; 
 
 async function getData() {
     const response = await fetch('http://localhost:5678/api/works', {
