@@ -68,7 +68,6 @@
             </form>
         </section>
     </main>
-
     <footer>
         <nav>
             <ul>
@@ -76,5 +75,39 @@
             </ul>
         </nav>
     </footer>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Galerie photo</p>
+            <div class="ligne-modal"></div>
+            <button class="addPicture-button">Ajouter une photo</div>
+    </div>  
+<script>
+    // Récupérer la modale
+var modal = document.getElementById("myModal");
+
+// Récupérer le bouton "modifier"
+var modifierBtn = document.querySelector(".modifier-text");
+
+// Récupérer l'élément span pour fermer la modale
+var span = document.querySelector(".close");
+
+// Quand l'utilisateur clique sur "modifier", afficher la modale
+modifierBtn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// Quand l'utilisateur clique sur <span> (x), fermer la modale
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Quand l'utilisateur clique en dehors de la modale, la fermer
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 </html>

@@ -414,8 +414,8 @@ h2 .fa-solid {
 	margin-right: 5px; 
 }
 
-/*HeaderBloc :Icon + Modify*/
 
+/*HeaderBloc :Icon + Modify*/
 
 .editorbloc {
 	display: flex;
@@ -428,3 +428,86 @@ h2 .fa-solid {
 .editorbloc .fa-solid {
 	color: white;
 }
+
+
+/*First Modale*/
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+	top: 50%; 
+	left: 50%; 
+	transform: translate(-50%, -50%); 
+	z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    width: 630px;
+    height: 688px;
+	border-radius: 10px 10px 10px 10px;
+}
+
+.modal-content p {
+    color: #000000;
+    font-family: Work Sans;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30.5px;
+    text-align: center;
+    padding: 50px;
+}
+
+.close {
+    color: black;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    width: 35px;
+    padding: 21px 20.99px 1.99px 1px;
+}
+  
+  .close:hover,
+  .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+
+/*Ligne horizontale + addPicture button*/
+
+.ligne-modal {
+    width: 420px;
+    border: 1px solid #B3B3B3;
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    top: 430px;
+    transform: translateX(-50%);
+}
+
+.addPicture-button {
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: #1D6154;
+    color: white;
+    border: 2px solid #F2F2F2;
+    border: 1px solid #1D6154;
+    width: 237px;
+    height: 36px;
+    font-family: Syne;
+    font-size: 14px;
+    line-height: 16.8px;
+    text-align: center;
+    position: relative;
+    left: 30%;
+    top: 470px;
+}
+
+  
