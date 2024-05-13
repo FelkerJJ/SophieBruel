@@ -11,6 +11,7 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="/FrontEnd/assets/script.js" defer></script>
+    <script src="/FrontEnd/assets/modal.js" defer></script>
     <script src="/FrontEnd/assets/login.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8/dist/jsonwebtoken.min.js"></script>
 </head>
@@ -79,35 +80,55 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <p>Galerie photo</p>
+            <div class="modal-gallery">
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/abajour-tahina.png" alt="Abajour Tahina">
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/appartement-paris-v.png" alt="Appartement Paris V">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/appartement-paris-x.png" alt="Appartement Paris X">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
+                    <i class="fa-solid fa-trash-can"></i>    
+                </div>
+            </div>
             <div class="ligne-modal"></div>
-            <button class="addPicture-button">Ajouter une photo</div>
-    </div>  
-<script>
-    // Récupérer la modale
-var modal = document.getElementById("myModal");
-
-// Récupérer le bouton "modifier"
-var modifierBtn = document.querySelector(".modifier-text");
-
-// Récupérer l'élément span pour fermer la modale
-var span = document.querySelector(".close");
-
-// Quand l'utilisateur clique sur "modifier", afficher la modale
-modifierBtn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// Quand l'utilisateur clique sur <span> (x), fermer la modale
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// Quand l'utilisateur clique en dehors de la modale, la fermer
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
+            <button class="addPicture-button">Ajouter une photo</button>
+        </div>
+    </div>
 </body>
 </html>

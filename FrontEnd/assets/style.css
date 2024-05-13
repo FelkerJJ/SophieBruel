@@ -466,7 +466,7 @@ h2 .fa-solid {
 .close {
     color: black;
     float: right;
-    font-size: 35px;
+    font-size: 24px;
     font-weight: bold;
     width: 35px;
     padding: 21px 20.99px 1.99px 1px;
@@ -486,9 +486,9 @@ h2 .fa-solid {
     width: 420px;
     border: 1px solid #B3B3B3;
     position: relative;
-    bottom: 0;
+    bottom: 20px;
     left: 50%;
-    top: 430px;
+    top: 79px;
     transform: translateX(-50%);
 }
 
@@ -498,16 +498,54 @@ h2 .fa-solid {
     background-color: #1D6154;
     color: white;
     border: 2px solid #F2F2F2;
-    border: 1px solid #1D6154;
     width: 237px;
     height: 36px;
     font-family: Syne;
-    font-size: 14px;
     line-height: 16.8px;
     text-align: center;
-    position: relative;
-    left: 30%;
-    top: 470px;
+    margin-top: 19%;
+    margin-left: 30%;
 }
 
+
   
+/*Modal pictures*/
+
+.modal-gallery {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    margin: auto;
+}
+
+.modal-gallery img {
+    width: 76.86px;
+    height: 102.57px;
+}
+
+.image-container i.fa-trash-can {
+    position: absolute;
+    top: 10px;
+    left: 53px;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.image-container {
+    position: relative;
+}
+
+.fa-trash-alt:before, .fa-trash-can:before {
+    content: "\f2ed";
+    margin-left: 4px;
+    font-size: 10px;
+    margin-bottom: 5px;
+	border-radius: 1px;
+}
