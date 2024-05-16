@@ -1,13 +1,8 @@
 // Récupérer la modale
 const modal = document.getElementById("myModal");
-
-// Récupérer le bouton "modifier"
 const modifierBtn = document.querySelector(".modifier-text");
-
-// Récupérer l'élément span pour fermer la modale
 const span = document.querySelector(".close");
 
-// Quand l'utilisateur clique sur "modifier", afficher la modale
 modifierBtn.onclick = function() {
   modal.style.display = "block";
 }
