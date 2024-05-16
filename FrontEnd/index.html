@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="/FrontEnd/assets/script.js" defer></script>
-    <script src="/FrontEnd/assets/modal.js" defer></script>
+    <script src="/FrontEnd/assets/showModal.js" defer></script>
     <script src="/FrontEnd/assets/login.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8/dist/jsonwebtoken.min.js"></script>
 </head>
@@ -59,11 +59,11 @@
             <h2>Contact</h2>
             <p>Vous avez un projet ? Discutons-en !</p>
             <form action="#" method="post">
-                <label for="name">Nom</label>
-                <input type="text" name="name" id="name">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
-                <label for="message">Message</label>
+                <label class="LabelFooter" for="name">Nom</label>
+                <input class="inputFooter" type="text" name="name" id="name">
+                <label class="LabelFooter" for="email">Email</label>
+                <input class="inputFooter" type="email" name="email" id="email">
+                <label class="LabelFooter" for="message">Message</label>
                 <textarea name="message" id="message" cols="30" rows="10"></textarea>
                 <input type="submit" value="Envoyer">
             </form>
@@ -78,8 +78,9 @@
     </footer>
     <div id="myModal" class="modal">
         <div class="modal-content">
+            <div class="arrow-left"></div>
             <span class="close">&times;</span>
-            <p>Galerie photo</p>
+            <p id="modalTitle1">Galerie photo</p>
             <div class="modal-gallery">
                 <div class="image-container">
                     <img src="/FrontEnd/assets/images/abajour-tahina.png" alt="Abajour Tahina">
@@ -93,7 +94,7 @@
                     <img src="/FrontEnd/assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
                     <i class="fa-solid fa-trash-can"></i>    
                 </div>
-                                <div class="image-container">
+                <div class="image-container">
                     <img src="/FrontEnd/assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
                     <i class="fa-solid fa-trash-can"></i>    
                 </div>
@@ -126,9 +127,46 @@
                     <i class="fa-solid fa-trash-can"></i>    
                 </div>
             </div>
+            <div id="pictureBloc" class="hidden">
+                <div class="IconCTA"><i class="fa-regular fa-image"></i></div>
+                <button id="addPhotoButton2" class="addPicture-button2"> <div class="textCTA">+ Ajouter photo</div></button>
+              <span class="textafterCTA">jpg, png : 4mo max</span>
+                <div class="button"></div>
+            </div>
+            <div id="addPhotoForm" class="hidden">
+                <label for="titre" class="label">Titre</label>
+                <input class="modal-input" type="text" id="titre" name="titre">
+                <br>
+                <label for="categorie" class="label">Catégorie</label>
+                <input type="text" id="categorie" name="categorie" class="input-field">
+            </div>
+            
             <div class="ligne-modal"></div>
-            <button class="addPicture-button">Ajouter une photo</button>
+            <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
+            <div id="previousButtonModal2" class="previous-button hidden"></div>
         </div>
     </div>
-</body>
+    
+<script>
+document.getElementById("addPhotoButton").addEventListener("click", function() {
+    document.getElementById("modalTitle1").textContent = "Ajout photo";
+    document.querySelector(".modal-gallery").style.display = "none";
+    document.getElementById("addPhotoForm").style.display = "block";
+    document.getElementById("pictureBloc").style.display = "block";
+    document.getElementById("previousButtonModal2").classList.remove("hidden");
+    document.getElementById("addPhotoButton").textContent = "Valider";
+    document.getElementById("addPhotoButton").classList.add("gray-background");
+});
+
+document.getElementById("previousButtonModal2").addEventListener("click", function() {
+    document.getElementById("modalTitle1").textContent = "Galerie photo";
+    document.querySelector(".modal-gallery").style.display = "block";
+    document.getElementById("addPhotoForm").style.display = "none"; 
+    document.getElementById("pictureBloc").style.display = "none";
+    document.getElementById("previousButtonModal2").classList.add("hidden");
+    document.getElementById("addPhotoButton").textContent = "Ajouter une photo";
+    document.getElementById("addPhotoButton").classList.remove("gray-background");
+});
+</script>
+</body> 
 </html>
