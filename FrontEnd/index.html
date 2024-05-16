@@ -13,6 +13,7 @@
     <script src="/FrontEnd/assets/script.js" defer></script>
     <script src="/FrontEnd/assets/showModal.js" defer></script>
     <script src="/FrontEnd/assets/login.js" defer></script>
+    <script src="/FrontEnd/assets/secondModal.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8/dist/jsonwebtoken.min.js"></script>
 </head>
 <body>
@@ -129,7 +130,7 @@
             </div>
             <div id="pictureBloc" class="hidden">
                 <div class="IconCTA"><i class="fa-regular fa-image"></i></div>
-                <button id="addPhotoButton2" class="addPicture-button2"> <div class="textCTA">+ Ajouter photo</div></button>
+                <button id="addPhotoButton2" class="addPicture-button2">+ Ajouter photo</button>
               <span class="textafterCTA">jpg, png : 4mo max</span>
                 <div class="button"></div>
             </div>
@@ -140,33 +141,10 @@
                 <label for="categorie" class="label">Catégorie</label>
                 <input type="text" id="categorie" name="categorie" class="input-field">
             </div>
-            
             <div class="ligne-modal"></div>
             <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
             <div id="previousButtonModal2" class="previous-button hidden"></div>
         </div>
     </div>
-    
-<script>
-document.getElementById("addPhotoButton").addEventListener("click", function() {
-    document.getElementById("modalTitle1").textContent = "Ajout photo";
-    document.querySelector(".modal-gallery").style.display = "none";
-    document.getElementById("addPhotoForm").style.display = "block";
-    document.getElementById("pictureBloc").style.display = "block";
-    document.getElementById("previousButtonModal2").classList.remove("hidden");
-    document.getElementById("addPhotoButton").textContent = "Valider";
-    document.getElementById("addPhotoButton").classList.add("gray-background");
-});
-
-document.getElementById("previousButtonModal2").addEventListener("click", function() {
-    document.getElementById("modalTitle1").textContent = "Galerie photo";
-    document.querySelector(".modal-gallery").style.display = "block";
-    document.getElementById("addPhotoForm").style.display = "none"; 
-    document.getElementById("pictureBloc").style.display = "none";
-    document.getElementById("previousButtonModal2").classList.add("hidden");
-    document.getElementById("addPhotoButton").textContent = "Ajouter une photo";
-    document.getElementById("addPhotoButton").classList.remove("gray-background");
-});
-</script>
 </body> 
 </html>

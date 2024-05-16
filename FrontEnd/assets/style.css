@@ -193,7 +193,7 @@ li:hover {
 }
 
 #contact h2 {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 #contact form {
@@ -220,7 +220,7 @@ li:hover {
 #contact textarea {
 	border: none;
 	width: 383px;
-	margin-bottom: 20px;
+	margin-bottom: 45px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
@@ -234,6 +234,7 @@ input[type="submit"] {
 	text-align: center;
 	border-radius: 60px;
 	margin: inherit;
+	margin-left: 22%;
 	height: 36px;
 }
 
@@ -283,6 +284,7 @@ footer nav ul {
 	background-color: #1D6154; /* Changer la couleur de fond au survol */
 	color: white; /* Changer la couleur du texte au survol si nécessaire */
 }
+
 
 /* Connexion Page */
 .input {
@@ -369,6 +371,7 @@ input {
 	font-weight: bold;
 }
 
+
 /* Effet de survol sur le menu */
 nav ul li a {
 	text-decoration: none;
@@ -384,6 +387,7 @@ nav ul li a:active {
 	color: #000;
 }
 
+
 /* Pied de page */
 footer {
 	display: flex;
@@ -392,6 +396,7 @@ footer {
 	flex-wrap: wrap;
 	align-content: center;
 }
+
 
 /* Éditeur d'en-tête dynamique */
 .mode-edition {
@@ -403,6 +408,7 @@ footer {
 	line-height: 50px;
 	display: none;
 }
+
 
 /* Projet: Icône + Modifier */
 .modifier-text {
@@ -427,6 +433,7 @@ h2 .fa-solid {
 	margin-right: 5px;
 }
 
+
 /* Bloc d'en-tête: Icône + Modifier */
 .editorbloc {
 	display: flex;
@@ -439,6 +446,7 @@ h2 .fa-solid {
 .editorbloc .fa-solid {
 	color: white;
 }
+
 
 /* Première modale */
 .modal {
@@ -487,6 +495,7 @@ h2 .fa-solid {
 	cursor: pointer;
 }
 
+
 /* Ligne horizontale + bouton Ajouter une image */
 .ligne-modal {
 	width: 420px;
@@ -494,7 +503,7 @@ h2 .fa-solid {
 	position: relative;
 	bottom: 20px;
 	left: 50%;
-	top: 25px;
+	top: 75px;
 	transform: translateX(-50%);
 }
 
@@ -510,8 +519,9 @@ h2 .fa-solid {
 	line-height: 16.8px;
 	text-align: center;
 	margin-left: 30%;
-	margin-top: 9%
+	margin-top: 18%
 }
+
 
 /* Première modale (images + icône) */
 .modal-gallery {
@@ -554,8 +564,16 @@ h2 .fa-solid {
 	border-radius: 1px;
 }
 
-.gray-background {
-	background-color: gray;
+.elementCTA {
+    background-color: gray;
+    margin-top: 45px;
+}
+
+.elementLign {
+    border: 1px solid #b3b3b3;
+    position: relative;
+    bottom: 20px;
+    top: 20px;
 }
 
 #addPhotoForm {
@@ -567,25 +585,25 @@ h2 .fa-solid {
 
 
 /* Deuxième modale */
-
 .addPicture-button2 {
-	border-radius: 25px;
-	padding: 9px 0px;
-	background-color: #cbd6dc;
-	color: #306685;
-	border: 2px solid #f2f2f2;
-	width: 173px;
-	height: 36px;
-	font-family: Syne;
-	line-height: 16.8px;
-	text-align: center;
-	margin-top: 24%;
-	margin-left: 30%;
-	font-size: 14px;
-	font-weight: 500;
-	line-height: 16.42px;
-	text-align: center;
-	margin-bottom: 1%;
+    border-radius: 25px;
+    padding: 9px 0px;
+    background-color: #cbd6dc;
+    color: #306685;
+    border: 2px solid #f2f2f2;
+    width: 173px;
+    height: 36px;
+    line-height: 16.8px;
+    text-align: center;
+    margin-top: 24%;
+    margin-left: 30%;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.42px;
+    text-align: center;
+    margin-bottom: 1%;
+    font-style: normal;
+    font-weight: 700;
 }
 
 .textafterCTA {
@@ -609,14 +627,14 @@ h2 .fa-solid {
 	height: 169px;
 	margin: auto;
 	border-radius: 3px 0px 0px 0px;
-	position: relative; /* Assurez-vous que le conteneur parent a une position relative */
+	position: relative; 
 }
 
 .IconCTA {
 	position: absolute;
 	top: 35%;
-	left: 50%; /* Positionnez l'icône au centre horizontalement et verticalement */
-	transform: translate(-50%, -50%); /* Centrez l'icône correctement */
+	left: 50%; 
+	transform: translate(-50%, -50%); 
 	font-size: 68px;
 }
 
@@ -630,7 +648,6 @@ h2 .fa-solid {
 	position: relative;
 }
 
-/* Utiliser la classe label pour le style des étiquettes */
 .label {
     font-size: 14px;
     font-weight: bold;
@@ -643,7 +660,5 @@ h2 .fa-solid {
 	height: 51px;
 	top: 2799px;
 	left: 530px;
-	gap: 0px;
-	opacity: 0px;
 	margin-bottom: 20px; 
 }
