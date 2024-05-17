@@ -5,6 +5,7 @@ document.getElementById("addPhotoButton").addEventListener("click", function() {
     document.getElementById("addPhotoForm").style.display = "block";
     document.getElementById("pictureBloc").style.display = "block";
     document.getElementById("previousButtonModal2").classList.remove("hidden");
+    document.querySelector(".modal-content .arrow-left .fa-solid.fa-arrow-left").style.display = "block";
 });
 
     

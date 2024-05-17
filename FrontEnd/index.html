@@ -79,8 +79,10 @@
     </footer>
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <div class="arrow-left"></div>
-            <span class="close">&times;</span>
+                <div class="arrow-left">                  
+                    <i class="fa-solid fa-arrow-left"> 
+                    <span class="close">&times;</span></i>
+                </div>
             <p id="modalTitle1">Galerie photo</p>
             <div class="modal-gallery">
                 <div class="image-container">
@@ -108,15 +110,15 @@
                     <i class="fa-solid fa-trash-can"></i>    
                 </div>
                 <div class="image-container">
-                    <img src="/FrontEnd/assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-                    <i class="fa-solid fa-trash-can"></i>    
-                </div>
-                <div class="image-container">
                     <img src="/FrontEnd/assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-                    <i class="fa-solid fa-trash-can"></i>    
+                    <i class="fa-solid fa-trash-can"></i> 
                 </div>
                 <div class="image-container">
-                    <img src="/FrontEnd/assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
+                        <img src="/FrontEnd/assets/images/appartement-paris-xviii.png" alt="Pavillon “Le coteau” - Cassis">
+                        <i class="fa-solid fa-trash-can"></i>      
+                </div>
+                <div class="image-container">
+                    <img src="/FrontEnd/assets/images/le-coteau-cassis.png" alt="Appartement Paris XVIII">
                     <i class="fa-solid fa-trash-can"></i>    
                 </div>
                 <div class="image-container">
@@ -139,7 +141,10 @@
                 <input class="modal-input" type="text" id="titre" name="titre">
                 <br>
                 <label for="categorie" class="label">Catégorie</label>
-                <input type="text" id="categorie" name="categorie" class="input-field">
+                <div class="input-container">
+                    <input type="text" id="categorie" name="categorie" class="input-field">
+                    <i class="fa-sharp fa-solid fa-chevron-down"></i>
+                </div>
             </div>
             <div class="ligne-modal"></div>
             <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
