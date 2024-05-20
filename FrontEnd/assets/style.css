@@ -474,10 +474,11 @@ h2 .fa-solid {
     color: #000000;
     font-size: 26px;
     font-weight: 400;
-    line-height: 30.5px; 
+    line-height: 30.5px;
     text-align: center;
-    padding: 30px;
+    padding: 25px;
     margin-bottom: 15px;
+    padding-top: 20px;
 }
 
 .close:hover,
@@ -495,7 +496,7 @@ h2 .fa-solid {
 	position: relative;
 	bottom: 20px;
 	left: 50%;
-	top: 75px;
+	top: 76px;
 	transform: translateX(-50%);
 }
 
@@ -555,20 +556,6 @@ h2 .fa-solid {
 	margin-bottom: 5px;
 	border-radius: 1px;
 }
-
-.elementCTA {
-    background-color: gray;
-    margin-top: 38px;
-	height: 34px;
-}
-
-.elementLign {
-    border: 1px solid #b3b3b3;
-    position: relative;
-    bottom: 20px;
-    top: 11px;
-}
-
 
 #addPhotoForm {
     display: none;
@@ -695,17 +682,40 @@ h2 .fa-solid {
 
 .close {
     color: black;
-    position: absolute;
-    left: 560px;
+    position: relative;
+    left: 92%;
+    top: 24px;
     font-size: 26px;
     font-weight: bold;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .arrow-left {
     top: 10px;
     left: 10px;
     font-size: 21px;
+	margin-bottom: 20px;
 }
 
+.ligne-modalreturn {
+    width: 420px;
+    border: 1px solid #b3b3b3;
+    position: relative;
+    bottom: 20px;
+    left: 50%;
+    top: 76px;
+    transform: translateX(-50%);
+}
 
+.elementCTA {
+    background-color: gray;
+    margin-top: 38px;
+	height: 34px;
+}
+
+.elementLign {
+    border: 1px solid #b3b3b3;
+    position: relative;
+    bottom: 20px;
+    top: 11px;
+}

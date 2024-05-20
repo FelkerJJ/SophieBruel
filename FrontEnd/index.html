@@ -78,11 +78,12 @@
         </nav>
     </footer>
     <div id="myModal" class="modal">
-        <div class="modal-content">
-                <div class="arrow-left">                  
-                    <i class="fa-solid fa-arrow-left"> 
-                    <span class="close">&times;</span></i>
+        <div class="modal-content">  
+                    <div class="arrow-left">               
+                    <i class="fa-solid fa-arrow-left" id="arrowLeftIcon"></i>
+                    <span class="close">&times;</span>
                 </div>
+                <div id="mainContainer" class="mainContainer hidden first-modal">
             <p id="modalTitle1">Galerie photo</p>
             <div class="modal-gallery">
                 <div class="image-container">
@@ -149,6 +150,7 @@
             <div class="ligne-modal"></div>
             <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
             <div id="previousButtonModal2" class="previous-button hidden"></div>
+        </div>
         </div>
     </div>
 </body> 
