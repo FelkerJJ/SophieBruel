@@ -397,19 +397,6 @@ footer {
 	align-content: center;
 }
 
-
-/* Éditeur d'en-tête dynamique */
-.mode-edition {
-	width: 1440px;
-	height: 59px;
-	background-color: black;
-	color: white;
-	text-align: center;
-	line-height: 50px;
-	display: none;
-}
-
-
 /* Projet: Icône + Modifier */
 .modifier-text {
 	display: none;
@@ -436,11 +423,20 @@ h2 .fa-solid {
 
 /* Bloc d'en-tête: Icône + Modifier */
 .editorbloc {
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-content: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Éditeur d'en-tête dynamique */
+.mode-edition {
+    width: 100%;
+    position: fixed;
+    height: 59px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    display: none;
 }
 
 .editorbloc .fa-solid {
@@ -703,7 +699,7 @@ h2 .fa-solid {
     position: relative;
     bottom: 20px;
     left: 50%;
-    top: 76px;
+    top: 77px;
     transform: translateX(-50%);
 }
 

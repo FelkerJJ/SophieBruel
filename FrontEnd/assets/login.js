@@ -1,7 +1,6 @@
 // Vérifie si une session utilisateur est active
 const isSomeoneLoggedIn = getSession();
 
-// Si la session est active 
 if(isSomeoneLoggedIn) {
   const loginLink = document.getElementById("login-link");
 
@@ -60,6 +59,8 @@ function checkLogin() {
             if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
               saveSession(response);
               window.location.href = 'index.html';
+              document.getElementById("modeEdition").style.display = "block";
+              // document.querySelector("headerId").style.display; 
             }
             else {
               alert('Erreur dans l’identifiant ou le mot de passe');
@@ -80,4 +81,9 @@ if(logoutLink) {
     localStorage.clear();
     window.location.href = 'login.html';
   });
+}
+
+function getSession() {
+  const userData = localStorage.getItem('loggedInUser');
+  return userData ? JSON.parse(userData) : null;
 }
