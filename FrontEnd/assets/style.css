@@ -685,7 +685,7 @@ h2 .fa-solid {
     position: relative;
     left: 92%;
     top: 24px;
-    font-size: 26px;
+    font-size: 28px;
     font-weight: bold;
 	cursor: pointer;
 }
@@ -703,7 +703,7 @@ h2 .fa-solid {
     position: relative;
     bottom: 20px;
     left: 50%;
-    top: 75px;
+    top: 76px;
     transform: translateX(-50%);
 }
 
@@ -717,5 +717,5 @@ h2 .fa-solid {
     border: 1px solid #b3b3b3;
     position: relative;
     bottom: 20px;
-    top: 11px;
+    top: 10px;
 }

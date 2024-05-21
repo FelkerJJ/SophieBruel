@@ -24,6 +24,9 @@ arrowLeftIcon.addEventListener("click", function() {
     customCTAButton.classList.remove("elementCTA", "elementLign"); 
     document.querySelector(".ligne-modal").classList.remove("elementLign");
     document.querySelector(".ligne-modal").classList.add("ligne-modalreturn"); 
+    document.querySelector(".mainContainer").style.bottom = "0px";
+    document.querySelector(".close").style.top = "24px";
+    arrowLeftIcon.style.display = "none";  
 });
 
 
