@@ -72,9 +72,9 @@ body {
 
 /* En-tête du site */
 header {
-	display: flex;
-	justify-content: space-between;
-	margin: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0; /* marge par défaut */
 }
 
 /* Sections du contenu */
@@ -425,6 +425,11 @@ h2 .fa-solid {
 .editorbloc {
     display: flex;
     justify-content: space-evenly;
+}
+
+.emptyBlocBis {
+	height: 30px;
+	display: none;
 }
 
 /* Éditeur d'en-tête dynamique */

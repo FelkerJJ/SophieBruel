@@ -1,7 +1,7 @@
 // Vérifie si une session utilisateur est active
 const isSomeoneLoggedIn = getSession();
 
-if(isSomeoneLoggedIn) {
+if (isSomeoneLoggedIn) {
   const loginLink = document.getElementById("login-link");
 
   if (loginLink) {
@@ -12,13 +12,19 @@ if(isSomeoneLoggedIn) {
 
     const faSolidElements = document.querySelectorAll('h2 .fa-solid');
     faSolidElements.forEach(element => {
-        element.style.display = 'inline';
+      element.style.display = 'inline';
     });
 
     const modifierTextElements = document.querySelectorAll('.modifier-text');
     modifierTextElements.forEach(element => {
-        element.style.display = 'inline-block'; 
+      element.style.display = 'inline-block'; 
     });
+
+    // Affiche .emptyBlocBis si l'utilisateur est connecté
+    const emptyBlocBis = document.querySelector('.emptyBlocBis');
+    if (emptyBlocBis) {
+      emptyBlocBis.style.display = 'block';
+    }
   }
 }
 
@@ -54,18 +60,19 @@ function checkLogin() {
   const password = document.getElementById('password').value;
 
   login(email, password)
-      .then((response) => {
-          if (response) {
-            if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
-              saveSession(response);
-              window.location.href = 'index.html';
-              document.getElementById("modeEdition").style.display = "block";
-              // document.querySelector("headerId").style.display; 
-            }
-            else {
-              alert('Erreur dans l’identifiant ou le mot de passe');
-            }
-      }});
+    .then((response) => {
+      if (response) {
+        if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
+          saveSession(response);
+          window.location.href = 'index.html';
+          document.getElementById("modeEdition").style.display = "block";
+          document.querySelector('.emptyBlocBis').style.display = "block";
+        }
+        else {
+          alert('Erreur dans l’identifiant ou le mot de passe');
+        }
+      }
+    });
 }
 
 // Récupère les données de session utilisateur du stockage local
@@ -75,7 +82,7 @@ function getSession(userData) {
 
 // Gestionnaire d'événement pour la déconnexion
 const logoutLink = document.getElementById("logout-link");
-if(logoutLink) {
+if (logoutLink) {
   document.getElementById('logout-link').addEventListener('click', function(event) {
     event.preventDefault();
     localStorage.clear();
