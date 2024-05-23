@@ -60,16 +60,6 @@ table {
 	border-spacing: 0;
 }
 
-/** Fin de la réinitialisation des styles **/
-
-/* Styles spécifiques à votre site */
-body {
-	max-width: 1140px;
-	margin: auto;
-	font-size: 14px;
-	background: #FFFEF8;
-}
-
 /* En-tête du site */
 header {
     display: flex;
@@ -93,7 +83,7 @@ h1 {
 }
 
 /* Utilisation de la police 'Work Sans' pour le corps, les titres et les div */
-body, h1, h2, div, span {
+body, h2, div, span {
 	font-family: 'Work Sans';
 }
 
@@ -139,6 +129,8 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	margin-top: 8%;
+	margin-bottom: 11%;
 }
 
 #introduction figure {
@@ -149,6 +141,7 @@ li:hover {
 	display: block;
 	margin: auto;
 	width: 80%;
+	margin-right: 10px;
 }
 
 #introduction article {
@@ -161,6 +154,7 @@ li:hover {
 
 #introduction p {
 	margin-bottom: 0.5em;
+	max-width: 72%;
 }
 
 /* Titre de la section portfolio */
@@ -238,16 +232,6 @@ input[type="submit"] {
 	height: 36px;
 }
 
-/* Pied de page */
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em;
-	background: white;
-	width: 1440px;
-	height: 60px;
-}
-
 /* Filtrage sur la page d'accueil */
 .filters-button {
 	justify-content: center;
@@ -259,6 +243,11 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 25px;
+}
+
+.mainJs {
+	height: 30px;
+	display: none;
 }
 
 .all,
@@ -386,16 +375,6 @@ nav ul li a:active {
 	color: #000;
 }
 
-
-/* Pied de page */
-footer {
-	display: flex;
-	justify-content: space-between;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-content: center;
-}
-
 /* Projet: Icône + Modifier */
 .modifier-text {
 	display: none;
@@ -427,7 +406,7 @@ h2 .fa-solid {
 }
 
 .emptyBlocBis {
-	height: 30px;
+	height: 40px;
 	display: none;
 }
 
@@ -718,4 +697,49 @@ h2 .fa-solid {
     position: relative;
     bottom: 20px;
     top: 10px;
+}
+
+
+
+
+/* Styles spécifiques à votre site */
+body {
+	margin: auto;
+	font-size: 14px;
+	background: #FFFEF8;
+}
+
+main, header  {
+	max-width: 1140px;
+	margin: auto;
+    padding: 25px
+}
+
+
+
+.navbot {
+    background: white;
+    width: 1440px;
+	display: flex;
+    justify-content: flex-end;
+    margin: 1em;
+}
+
+/* Pied de page */
+footer {
+    display: flex;
+    background: white;
+    height: 60px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footerMain {
+	background-color: #1D6154;
+}
+
+article {
+    max-width: 50%;
+    margin-left: 40px;
+    margin-top: 15px;
 }

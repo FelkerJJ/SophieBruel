@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <title>Sophie Bluel - Architecte d'intérieur</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Architecte d'intérieur Sophie Bluel. Découvrez ses projets et contactez-la pour vos besoins de design d'espace.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <meta name="description" content="">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="/FrontEnd/assets/dataDisplay.js" defer></script>
     <script src="/FrontEnd/assets/showModal.js" defer></script>
     <script src="/FrontEnd/assets/login.js" defer></script>
     <script src="/FrontEnd/assets/pictureDelete.js" defer></script>
     <script src="/FrontEnd/assets/secondModal.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8/dist/jsonwebtoken.min.js"></script>
 </head>
 <body>
     <div class="editorbloc"> 
@@ -26,6 +25,7 @@
     <div class="emptyBlocBis">
         <div id="emptyBloc"></div>
     </div>
+    <main>
     <header id="headerId">
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
         <nav>
@@ -37,21 +37,24 @@
             </ul>
         </nav>
     </header>
-    <main>
         <div id="introduction">
             <figure>
-                <img src="./assets/images/sophie-bluel.png" alt="">
+                <img src="./assets/images/sophie-bluel.png" alt="Photo de Sophie Bluel">
             </figure>
             <article>
                 <h2>Designer d'espace</h2>
-                <p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-                <p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-                <p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+                <p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p><br>
+                <p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p><br>
+                <p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p><br>
             </article>
         </div>
         <section id="portfolio">
-            <h2>Mes Projets<i class="fa-solid fa-pen-to-square"></i> <span class="modifier-text">modifier</span></h2>
+            <h2>Mes Projets 
+                <i class="fa-solid fa-pen-to-square"></i> 
+                <span class="modifier-text">modifier</span>
+            </h2>
                 <div class="mainfilters">
+                    <div id="mainJs"></div>
                 <div class="filters-button">
                     <button class="all" data-category-id="all">Tous</button>
                     <button class="objects" data-category-id="1">Objets</button>
@@ -75,15 +78,6 @@
                 <input type="submit" value="Envoyer">
             </form>
         </section>
-    </main>
-    <footer>
-            <nav>
-                <ul>
-                    <li>Mentions Légales</li>
-                </ul>
-            </nav>
-        </div>
-    </footer>
     <div id="myModal" class="modal">
         <div class="modal-content">  
             <div class="arrow-left">               
@@ -158,6 +152,18 @@
             <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
             <div id="previousButtonModal2" class="previous-button hidden"></div>
         </div>
+        </div>
+    </div>
+    </main>
+    <div class="footerBloc">
+        <div id="footerMain" class="footerEdition">
+            <footer>
+                <nav class="navbot">
+                    <ul>
+                        <li>Mentions Légales</li>
+                    </ul>
+                </nav>
+            </footer>
         </div>
     </div>
 </body> 
