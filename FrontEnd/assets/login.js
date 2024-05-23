@@ -10,17 +10,19 @@ if (isSomeoneLoggedIn) {
     document.getElementById('modeEdition').style.display = 'block';
     document.querySelector('.filters-button').style.display = 'none';
 
+    // Affiche l'icône "fa-solid"
     const faSolidElements = document.querySelectorAll('h2 .fa-solid');
     faSolidElements.forEach(element => {
       element.style.display = 'inline';
     });
 
+    // Affiche le bouton "modifier"
     const modifierTextElements = document.querySelectorAll('.modifier-text');
     modifierTextElements.forEach(element => {
       element.style.display = 'inline-block'; 
     });
 
-    // Affiche .emptyBlocBis si l'utilisateur est connecté
+    // Affiche le bloc "emptyBlocBis" (Header) si l'utilisateur est connecté
     const emptyBlocBis = document.querySelector('.emptyBlocBis');
     if (emptyBlocBis) {
       emptyBlocBis.style.display = 'block';
@@ -90,6 +92,7 @@ if (logoutLink) {
   });
 }
 
+// Récupère les données de session utilisateur du stockage local
 function getSession() {
   const userData = localStorage.getItem('loggedInUser');
   return userData ? JSON.parse(userData) : null;

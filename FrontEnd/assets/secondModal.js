@@ -1,4 +1,4 @@
-// Événement au clic sur le bouton principal
+// Gestionnaire d'événement pour le premier bouton "Ajouter une photo"
 document.getElementById("addPhotoButton").addEventListener("click", function() {
     document.getElementById("modalTitle1").textContent = "Ajout photo";
     document.querySelector(".modal-gallery").style.display = "none";
@@ -11,10 +11,17 @@ document.getElementById("addPhotoButton").addEventListener("click", function() {
     arrowLeftIcon.style.display = "block"; 
 });
 
+// Modifs ajoutées par le bouton "Ajouter une photo"
+const customCTAButton = document.getElementById("addPhotoButton");
+customCTAButton.addEventListener("click", function() {
+    customCTAButton.textContent = "Valider"; 
+    customCTAButton.classList.add("elementCTA"); 
+    customCTAButton.classList.add("elementLign"); 
+    document.querySelector(".ligne-modal").classList.add("elementLign");
+});
 
-
-// Ajouter un gestionnaire d'événements au clic pour masquer l'icône de la flèche gauche
-arrowLeftIcon.addEventListener("click", function() {
+// Gestionnaire d'événement pour le retour "Galerie Photo" via ArrowLeft
+function resetToGallery() {
     document.getElementById("modalTitle1").textContent = "Galerie photo";
     document.querySelector(".modal-gallery").style.display = "grid";
     document.getElementById("addPhotoForm").style.display = "none";
@@ -26,16 +33,8 @@ arrowLeftIcon.addEventListener("click", function() {
     document.querySelector(".ligne-modal").classList.add("ligne-modalreturn"); 
     document.querySelector(".mainContainer").style.bottom = "0px";
     document.querySelector(".close").style.top = "24px";
-    arrowLeftIcon.style.display = "none";  
-});
+    arrowLeftIcon.style.display = "none";
+}
 
-
-
-// Modifs ajoutées par le bouton "Ajouter une photo"
-const customCTAButton = document.getElementById("addPhotoButton");
-customCTAButton.addEventListener("click", function() {
-    customCTAButton.textContent = "Valider"; 
-    customCTAButton.classList.add("elementCTA"); 
-    customCTAButton.classList.add("elementLign"); 
-    document.querySelector(".ligne-modal").classList.add("elementLign");
-});
+// Gestionnaire d'événement pour le reset "Galerie Photo" via ArrowLeft
+arrowLeftIcon.addEventListener("click", resetToGallery);

@@ -1,7 +1,6 @@
 // Variable vide pour stocker les données
 let allWorks = []; 
 
-// Effectue une requête "Get" pour récupérer les données de l'API 
 async function getData() {
     const response = await fetch('http://localhost:5678/api/works', {
         method: "GET",
@@ -13,14 +12,17 @@ async function getData() {
     return data;
 }
 
-// Fonction de gestionnaire d'événement pour le clic sur les filtres
+// Gestionnaire d'événements pour les filtres via l'ID
 async function handleFilterClick(event) {
+    // Récupération de l'ID de la catégorie à partir de l'élément cliqué
     const categoryID = event.target.dataset.categoryId;
+    // Filtrage des œuvres en fonction de l'ID de catégorie
     const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
+    // Mise à jour de la galerie avec les œuvres filtrées
     updateGallery(filteredWorks);
 }
 
-// Mettre à jour la galerie avec les nouveaux ajouts
+// Mettre à jour la galerie avec les nouveaux éléments
 function updateGallery(filteredWorks) {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
