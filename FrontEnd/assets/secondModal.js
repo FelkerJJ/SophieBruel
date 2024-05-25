@@ -11,7 +11,8 @@ document.getElementById("addPhotoButton").addEventListener("click", function() {
     arrowLeftIcon.style.display = "block"; 
 });
 
-// Modifs ajoutées par le bouton "Ajouter une photo"
+
+// Modifs ajoutées sur le bouton "Valider"
 const customCTAButton = document.getElementById("addPhotoButton");
 customCTAButton.addEventListener("click", function() {
     customCTAButton.textContent = "Valider"; 
@@ -38,3 +39,37 @@ function resetToGallery() {
 
 // Gestionnaire d'événement pour le reset "Galerie Photo" via ArrowLeft
 arrowLeftIcon.addEventListener("click", resetToGallery);
+
+
+// Gestionnaire d'événement pour ajouter une image sur le front
+document.getElementById("photoInput").addEventListener("change", function(event) {
+    const file = event.target.files[0]; // Récupère le fichier sélectionné par l'utilisateur
+    
+    if (file) { // Vérifie si un fichier a été sélectionné
+        const reader = new FileReader(); // Initialise un objet FileReader
+        
+        reader.onload = function(e) { // Définit une fonction à exécuter lorsque la lecture du fichier est terminée
+            const imageUrl = e.target.result; // Récupère l'URL de l'image
+            afficherImage(imageUrl); // Appelle la fonction pour afficher l'image sur le front-end
+        };
+        
+        reader.readAsDataURL(file); // Lit le fichier en tant que données URL
+    }
+});
+
+// Fonction pour afficher l'image sur le front-end
+function afficherImage(imageUrl) {
+    const imageElement = document.createElement("img"); // Crée un élément image
+    imageElement.src = imageUrl; // Définit la source de l'image
+    
+    const imageContainer = document.getElementById("imageContainer"); // Récupère le conteneur d'image par son ID
+    imageContainer.innerHTML = ""; // Efface le contenu précédent du conteneur d'image
+    imageContainer.appendChild(imageElement); // Ajoute l'élément image au conteneur d'image
+
+    // Masquer les éléments spécifiés
+    document.getElementById("addPictureLabel").style.display = "none";
+    document.getElementById("textinfoJs").style.display = "none";
+    document.getElementById("IconJs").style.display = "none";
+
+}
+

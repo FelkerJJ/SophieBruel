@@ -53,7 +53,7 @@
                 <i class="fa-solid fa-pen-to-square"></i> 
                 <span class="modifier-text">modifier</span>
             </h2>
-                <div class="mainfilters">
+                <div id="mainfiltersJs" class="mainfilters">
                     <div id="mainJs"></div>
                 <div class="filters-button">
                     <button class="all" data-category-id="all">Tous</button>
@@ -132,22 +132,26 @@
                     <i class="fa-solid fa-trash-can" data-item-id="11"></i> 
                 </div>
             </div>
-            <div id="pictureBloc" class="hidden">
-                <div class="IconCTA"><i class="fa-regular fa-image"></i></div>
-                <button id="addPhotoButton2" class="addPicture-button2">+ Ajouter photo</button>
-              <span class="textafterCTA">jpg, png : 4mo max</span>
-                <div class="button"></div>
-            </div>
-            <div id="addPhotoForm" class="hidden">
-                <label for="titre" class="label">Titre</label>
-                <input class="modal-input" type="text" id="titre" name="titre">
-                <br>
-                <label for="categorie" class="label">Catégorie</label>
-                <div class="input-container">
-                    <input type="text" id="categorie" name="categorie" class="input-field">
-                    <i class="fa-sharp fa-solid fa-chevron-down"></i>
+            <form id="photoUploadForm" enctype="multipart/form-data">
+                <div id="pictureBloc">
+                    <div id="imageContainer" class="imageContainer"></div>
+                    <div class="IconCTA" id="IconJs"> <i class="fa-regular fa-image"></i></div>
+                    <label for="photoInput" class="addPicture-button2" id="addPictureLabel">+ Ajouter photo</label>
+                    <input type="file" id="photoInput" name="photo" accept="image/*" style="display: none;">
+                    <span class="textafterCTA" id="textinfoJs">jpg, png : 4mo max</span>
+                    <div class="button"></div>
                 </div>
-            </div>
+                <div id="addPhotoForm" class="hidden">
+                    <label for="titre" class="label">Titre</label>
+                    <input class="modal-input" type="text" id="titre" name="titre" autocomplete="off">
+                    <br>
+                    <label for="categorie" class="label">Catégorie</label>
+                    <div class="input-container">
+                        <input type="text" id="categorie" name="categorie" class="input-field">
+                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </form>
             <div class="ligne-modal"></div>
             <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
             <div id="previousButtonModal2" class="previous-button hidden"></div>
