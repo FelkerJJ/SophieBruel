@@ -15,6 +15,9 @@
     <script src="/FrontEnd/assets/login.js" defer></script>
     <script src="/FrontEnd/assets/pictureDelete.js" defer></script>
     <script src="/FrontEnd/assets/secondModal.js" defer></script>
+    <script src="/FrontEnd/assets/callCategories.js" defer></script>
+    <script src="/FrontEnd/assets/Formulaire.js" defer></script>
+
 </head>
 <body>
     <div class="editorbloc"> 
@@ -69,13 +72,13 @@
             <h2>Contact</h2>
             <p>Vous avez un projet ? Discutons-en !</p>
             <form action="#" method="post">
-                <label class="LabelFooter" for="name">Nom</label>
-                <input class="inputFooter" type="text" name="name" id="name">
-                <label class="LabelFooter" for="email">Email</label>
-                <input class="inputFooter" type="email" name="email" id="email">
-                <label class="LabelFooter" for="message">Message</label>
-                <textarea name="message" id="message" cols="30" rows="10"></textarea>
-                <input type="submit" value="Envoyer">
+            <label class="LabelFooter" for="name">Nom</label>
+            <input class="inputFooter" type="text" name="name" id="name">
+            <label class="LabelFooter" for="email">Email</label>
+            <input class="inputFooter" type="email" name="email" id="email">
+            <label class="LabelFooter" for="message">Message</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+            <input type="submit" value="Envoyer">
             </form>
         </section>
     <div id="myModal" class="modal">
@@ -147,7 +150,7 @@
                     <br>
                     <label for="categorie" class="label">Catégorie</label>
                     <div class="input-container">
-                        <input type="text" id="categorie" name="categorie" class="input-field">
+                        <select id="categorie" name="categorie" class="input-field"></select>
                         <i class="fa-sharp fa-solid fa-chevron-down"></i>
                     </div>
                 </div>

@@ -14,11 +14,8 @@ async function getData() {
 
 // Gestionnaire d'événements pour les filtres via l'ID
 async function handleFilterClick(event) {
-    // Récupération de l'ID de la catégorie à partir de l'élément cliqué
     const categoryID = event.target.dataset.categoryId;
-    // Filtrage des œuvres en fonction de l'ID de catégorie
     const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
-    // Mise à jour de la galerie avec les œuvres filtrées
     updateGallery(filteredWorks);
 }
 
