@@ -489,12 +489,11 @@ h2 .fa-solid {
 
 .addPicture-button.active {
     background-color: #1D6154;
-;
 }
 
 
 /* Première modale (images + icône) */
-.modal-gallery {
+.modal-gallery  {
 	width: fit-content;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);

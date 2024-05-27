@@ -24,3 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
     titleInput.addEventListener('input', checkFormValidity);
     categorySelect.addEventListener('change', checkFormValidity);
 });
+
+const addButton = document.querySelector('.addPicture-button');
+
+addButton.addEventListener('click', function() {
+});

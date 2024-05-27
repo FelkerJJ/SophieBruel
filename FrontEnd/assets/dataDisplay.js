@@ -1,6 +1,7 @@
 // Variable vide pour stocker les données
-let allWorks = []; 
+let allWorks = [];
 
+// Fonction pour récupérer les données depuis l'API
 async function getData() {
     const response = await fetch('http://localhost:5678/api/works', {
         method: "GET",
@@ -16,11 +17,12 @@ async function getData() {
 async function handleFilterClick(event) {
     const categoryID = event.target.dataset.categoryId;
     const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
-    updateGallery(filteredWorks);
+    updateGallery('.gallery', filteredWorks); // Mettre à jour la galerie principale
+    updateGallery('.modal-gallery', filteredWorks); // Mettre à jour la galerie modale avec les mêmes données filtrées
 }
 
-// Mettre à jour la galerie avec les nouveaux éléments
-function updateGallery(filteredWorks) {
+// Mettre à jour la galerie principale avec toutes les informations
+function updateMainGallery(filteredWorks) {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
     filteredWorks.forEach(work => {
@@ -36,13 +38,44 @@ function updateGallery(filteredWorks) {
     });
 }
 
-// Récupère les données lors du chargement de la page et met à jour la galerie
-getData().then(data => {
-    allWorks = data; 
-    updateGallery(allWorks);
-});
+// Mettre à jour la galerie modale avec les images uniquement
+function updateModalGallery(filteredWorks) {
+    const gallery = document.querySelector('.modal-gallery');
+    gallery.innerHTML = '';
+    filteredWorks.forEach(work => {
+        const img = document.createElement('img');
+        img.src = work.imageUrl;
+        gallery.appendChild(img);
+    });
+}
 
-// Add un gestionnaire d'événement pour les bouton de filtre pour déclencher la fonction handleFilterClick
-document.querySelectorAll(".filters-button button").forEach(button => {
-    button.addEventListener('click', handleFilterClick);
+// Récupère les données lors du chargement de la page et met à jour les galeries
+async function fetchDataAndUpdateGalleries() {
+    try {
+        const data = await getData(); // Récupérer les données depuis l'API
+        allWorks = data; // Mettre à jour la variable globale
+        updateMainGallery(allWorks); // Mettre à jour la galerie principale
+        updateModalGallery(allWorks); // Mettre à jour la galerie modale
+        // Stocker les données localement dans le navigateur
+        localStorage.setItem('allWorks', JSON.stringify(allWorks));
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+    }
+}
+
+// Récupérer les données localement si elles existent, sinon les récupérer à partir de l'API
+async function retrieveDataAndUpdateGalleries() {
+    const storedData = localStorage.getItem('allWorks');
+    if (storedData) {
+        allWorks = JSON.parse(storedData);
+        updateMainGallery(allWorks); // Mettre à jour la galerie principale
+        updateModalGallery(allWorks); // Mettre à jour la galerie modale
+    } else {
+        await fetchDataAndUpdateGalleries();
+    }
+}
+
+// Appeler la fonction pour récupérer et mettre à jour les données lors du chargement de la page
+document.addEventListener('DOMContentLoaded', async () => {
+    await retrieveDataAndUpdateGalleries();
 });
