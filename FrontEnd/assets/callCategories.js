@@ -36,3 +36,5 @@ async function populateCategories() {
 // Récupère et affiche les catégories lors du chargement de la page
 populateCategories();
 
+// Ajoute un gestionnaire d'événement pour la sélection de catégorie
+document.getElementById('categorie').addEventListener('change', handleFilterClick);

@@ -1,4 +1,4 @@
-// Variable vide pour stocker les données
+// Variables globales pour stocker les données
 let allWorks = [];
 
 // Fonction pour récupérer les données depuis l'API
@@ -17,8 +17,8 @@ async function getData() {
 async function handleFilterClick(event) {
     const categoryID = event.target.dataset.categoryId;
     const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
-    updateGallery('.gallery', filteredWorks); // Mettre à jour la galerie principale
-    updateGallery('.modal-gallery', filteredWorks); // Mettre à jour la galerie modale avec les mêmes données filtrées
+    updateMainGallery(filteredWorks); // Mettre à jour la galerie principale
+    updateModalGallery(filteredWorks); // Mettre à jour la galerie modale avec les mêmes données filtrées
 }
 
 // Mettre à jour la galerie principale avec toutes les informations
@@ -73,9 +73,17 @@ async function retrieveDataAndUpdateGalleries() {
     } else {
         await fetchDataAndUpdateGalleries();
     }
+
+    // Ajout des écouteurs d'événements pour les boutons de filtre
+    const filterButtons = document.querySelectorAll('.filters-button button');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', handleFilterClick);
+    });
 }
 
 // Appeler la fonction pour récupérer et mettre à jour les données lors du chargement de la page
 document.addEventListener('DOMContentLoaded', async () => {
     await retrieveDataAndUpdateGalleries();
 });
+
+import { retrieveDataAndUpdateGalleries } from './apiFunctions.js';

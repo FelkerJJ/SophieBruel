@@ -10,7 +10,7 @@ arrowLeftIcon.style.display = "none";
 modifierBtn.onclick = function() {
   modal.style.display = "block";
 }
- 
+
 // Quand l'utilisateur clique sur (x) = redirection page "Galerie Photo" + fermer la modale
 closeSpan.onclick = function() {
   resetToGallery();
