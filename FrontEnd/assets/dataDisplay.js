@@ -17,8 +17,8 @@ async function getData() {
 async function handleFilterClick(event) {
     const categoryID = event.target.dataset.categoryId;
     const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
-    updateMainGallery(filteredWorks); // Mettre à jour la galerie principale
-    updateModalGallery(filteredWorks); // Mettre à jour la galerie modale avec les mêmes données filtrées
+    updateMainGallery(filteredWorks); 
+    updateModalGallery(filteredWorks); 
 }
 
 // Mettre à jour la galerie principale avec toutes les informations
@@ -52,11 +52,10 @@ function updateModalGallery(filteredWorks) {
 // Récupère les données lors du chargement de la page et met à jour les galeries
 async function fetchDataAndUpdateGalleries() {
     try {
-        const data = await getData(); // Récupérer les données depuis l'API
-        allWorks = data; // Mettre à jour la variable globale
-        updateMainGallery(allWorks); // Mettre à jour la galerie principale
-        updateModalGallery(allWorks); // Mettre à jour la galerie modale
-        // Stocker les données localement dans le navigateur
+        const data = await getData(); 
+        allWorks = data; 
+        updateMainGallery(allWorks); 
+        updateModalGallery(allWorks);
         localStorage.setItem('allWorks', JSON.stringify(allWorks));
     } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
@@ -68,8 +67,8 @@ async function retrieveDataAndUpdateGalleries() {
     const storedData = localStorage.getItem('allWorks');
     if (storedData) {
         allWorks = JSON.parse(storedData);
-        updateMainGallery(allWorks); // Mettre à jour la galerie principale
-        updateModalGallery(allWorks); // Mettre à jour la galerie modale
+        updateMainGallery(allWorks); 
+        updateModalGallery(allWorks);
     } else {
         await fetchDataAndUpdateGalleries();
     }
@@ -85,5 +84,3 @@ async function retrieveDataAndUpdateGalleries() {
 document.addEventListener('DOMContentLoaded', async () => {
     await retrieveDataAndUpdateGalleries();
 });
-
-import { retrieveDataAndUpdateGalleries } from './apiFunctions.js';

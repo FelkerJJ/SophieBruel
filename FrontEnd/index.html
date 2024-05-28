@@ -11,12 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/style.css">
     <script src="/FrontEnd/assets/dataDisplay.js" defer></script>
-    <script src="/FrontEnd/assets/showModal.js" defer></script>
+    <script src="/FrontEnd/assets/displayModal.js" defer></script>
     <script src="/FrontEnd/assets/login.js" defer></script>
     <script src="/FrontEnd/assets/secondModal.js" defer></script>
     <script src="/FrontEnd/assets/callCategories.js" defer></script>
-    <script src="/FrontEnd/assets/apiFunctions.JS" defer></script>
-
+    <script src="/FrontEnd/assets/imageGalleryData.js" defer></script>
 </head>
 <body>
     <div class="editorbloc"> 
@@ -28,17 +27,17 @@
         <div id="emptyBloc"></div>
     </div>
     <main>
-    <header id="headerId">
-        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-        <nav>
-            <ul>
-                <li><a class="active" href="index.html">projets</a></li>
-                <li>contact</li>
-                <li><a href="login.html" id="login-link">login</a></li>
-                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
-    </header>
+        <header id="headerId">
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+            <nav>
+                <ul>
+                    <li><a class="active" href="index.html">projets</a></li>
+                    <li>contact</li>
+                    <li><a href="login.html" id="login-link">login</a></li>
+                    <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+                </ul>
+            </nav>
+        </header>
         <div id="introduction">
             <figure>
                 <img src="./assets/images/sophie-bluel.png" alt="Photo de Sophie Bluel">
@@ -55,8 +54,8 @@
                 <i class="fa-solid fa-pen-to-square"></i> 
                 <span class="modifier-text">modifier</span>
             </h2>
-                <div id="mainfiltersJs" class="mainfilters">
-                    <div id="mainJs"></div>
+            <div id="mainfiltersJs" class="mainfilters">
+                <div id="mainJs"></div>
                 <div class="filters-button">
                     <button class="all" data-category-id="all">Tous</button>
                     <button class="objects" data-category-id="1">Objets</button>
@@ -71,53 +70,53 @@
             <h2>Contact</h2>
             <p>Vous avez un projet ? Discutons-en !</p>
             <form action="#" method="post">
-            <label class="LabelFooter" for="name">Nom</label>
-            <input class="inputFooter" type="text" name="name" id="name">
-            <label class="LabelFooter" for="email">Email</label>
-            <input class="inputFooter" type="email" name="email" id="email">
-            <label class="LabelFooter" for="message">Message</label>
-            <textarea name="message" id="message" cols="30" rows="10"></textarea>
-            <input type="submit" value="Envoyer">
+                <label class="LabelFooter" for="name">Nom</label>
+                <input class="inputFooter" type="text" name="name" id="name">
+                <label class="LabelFooter" for="email">Email</label>
+                <input class="inputFooter" type="email" name="email" id="email">
+                <label class="LabelFooter" for="message">Message</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                <input type="submit" value="Envoyer">
             </form>
         </section>
-    <div id="myModal" class="modal">
-        <div class="modal-content">  
-            <div class="arrow-left">               
-                <i class="fa-solid fa-arrow-left" id="arrowLeftIcon"></i>
-                <span class="close">&times;</span>
-            </div>
-            <div id="mainContainer" class="mainContainer hidden first-modal">
-                <p id="modalTitle1">Galerie photo</p>
-                <div class="modal-gallery">
-                <div class="image-container">
+        <div id="myModal" class="modal">
+            <div class="modal-content">  
+                <div class="arrow-left">               
+                    <i class="fa-solid fa-arrow-left" id="arrowLeftIcon"></i>
+                    <span class="close">&times;</span>
                 </div>
-            </div>
-            <form id="photoUploadForm" enctype="multipart/form-data">
-                <div id="pictureBloc">
-                    <div id="imageContainer" class="imageContainer"></div>
-                    <div class="IconCTA" id="IconJs"> <i class="fa-regular fa-image"></i></div>
-                    <label for="photoInput" class="addPicture-button2" id="addPictureLabel">+ Ajouter photo</label>
-                    <input type="file" id="photoInput" name="photo" accept="image/*" style="display: none;">
-                    <span class="textafterCTA" id="textinfoJs">jpg, png : 4mo max</span>
-                    <div class="button"></div>
-                </div>
-                <div id="addPhotoForm" class="hidden">
-                    <label for="titre" class="label">Titre</label>
-                    <input class="modal-input" type="text" id="titre" name="titre" autocomplete="off">
-                    <br>
-                    <label for="categorie" class="label">Catégorie</label>
-                    <div class="input-container">
-                        <select id="categorie" name="categorie" class="input-field"></select>
-                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
+                <div id="mainContainer" class="mainContainer hidden first-modal">
+                    <p id="modalTitle1">Galerie photo</p>
+                    <div class="modal-gallery">
+                        <div class="image-container"></div>
                     </div>
                 </div>
-            </form>
-            <div class="ligne-modal"></div>
-            <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
-            <div id="previousButtonModal2" class="previous-button hidden"></div>
+                <form id="photoUploadForm" enctype="multipart/form-data">
+                    <div id="pictureBloc">
+                        <div id="imageContainer" class="imageContainer"></div>
+                        <div class="IconCTA" id="IconJs"> <i class="fa-regular fa-image"></i></div>
+                        <label for="photoInput" class="addPicture-button2" id="addPictureLabel">+ Ajouter photo</label>
+                        <input type="file" id="photoInput" name="photo" accept="image/*" style="display: none;">
+                        <span class="textafterCTA" id="textinfoJs">jpg, png : 4mo max</span>
+                        <div class="button"></div>
+                    </div>
+                    <div id="addPhotoForm" class="hidden">
+                        <label for="titre" class="label">Titre</label>
+                        <input class="modal-input" type="text" id="titre" name="titre" autocomplete="off">
+                        <br>
+                        <label for="categorie" class="label">Catégorie</label>
+                        <div class="input-container">
+                            <select id="categorie" name="categorie" class="input-field"></select>
+                            <i class="fa-sharp fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </form>
+                <div class="ligne-modal"></div>
+                <button id="addPhotoButton" class="addPicture-button">Ajouter une photo</button>
+                <div id="previousButtonModal2" class="previous-button hidden"></div>
+            </div>
+            </div>
         </div>
-        </div>
-    </div>
     </main>
     <div class="footerBloc">
         <div id="footerMain" class="footerEdition">

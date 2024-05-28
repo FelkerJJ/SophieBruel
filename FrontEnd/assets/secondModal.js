@@ -43,28 +43,28 @@ arrowLeftIcon.addEventListener("click", resetToGallery);
 
 // Gestionnaire d'événement pour ajouter une image sur le front
 document.getElementById("photoInput").addEventListener("change", function(event) {
-    const file = event.target.files[0]; // Récupère le fichier sélectionné par l'utilisateur
+    const file = event.target.files[0]; 
     
-    if (file) { // Vérifie si un fichier a été sélectionné
-        const reader = new FileReader(); // Initialise un objet FileReader
+    if (file) { 
+        const reader = new FileReader(); 
         
-        reader.onload = function(e) { // Définit une fonction à exécuter lorsque la lecture du fichier est terminée
-            const imageUrl = e.target.result; // Récupère l'URL de l'image
-            afficherImage(imageUrl); // Appelle la fonction pour afficher l'image sur le front-end
+        reader.onload = function(e) { 
+            const imageUrl = e.target.result; 
+            afficherImage(imageUrl); 
         };
         
-        reader.readAsDataURL(file); // Lit le fichier en tant que données URL
+        reader.readAsDataURL(file); 
     }
 });
 
 // Fonction pour afficher l'image sur le front-end
 function afficherImage(imageUrl) {
-    const imageElement = document.createElement("img"); // Crée un élément image
-    imageElement.src = imageUrl; // Définit la source de l'image
+    const imageElement = document.createElement("img"); 
+    imageElement.src = imageUrl; 
     
-    const imageContainer = document.getElementById("imageContainer"); // Récupère le conteneur d'image par son ID
-    imageContainer.innerHTML = ""; // Efface le contenu précédent du conteneur d'image
-    imageContainer.appendChild(imageElement); // Ajoute l'élément image au conteneur d'image
+    const imageContainer = document.getElementById("imageContainer"); 
+    imageContainer.innerHTML = ""; 
+    imageContainer.appendChild(imageElement); 
 
     // Masquer les éléments spécifiés
     document.getElementById("addPictureLabel").style.display = "none";
