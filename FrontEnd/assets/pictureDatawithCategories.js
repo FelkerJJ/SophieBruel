@@ -36,12 +36,7 @@ async function populateCategories() {
 // Récupère et affiche les catégories lors du chargement de la page
 populateCategories();
 
-// Appeler les fonctions pour récupérer et mettre à jour les données et les catégories lors du chargement de la page
-document.addEventListener('DOMContentLoaded', async () => {
-    await retrieveDataAndUpdateGalleries();
-});
 
-// Attendre que le contenu du document soit chargé
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('photoUploadForm');
     const photoInput = document.getElementById('photoInput');
@@ -62,8 +57,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Ajouter des écouteurs d'événements pour vérifier la validité du formulaire
-    photoInput.addEventListener('change', checkFormValidity);
-    titleInput.addEventListener('input', checkFormValidity);
-    categorySelect.addEventListener('change', checkFormValidity);
+    // Afficher un aperçu de l'image sélectionnée
+    function previewImage() {
+        const file = photoInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imageUrl = e.target.result;
+                const imageContainer = document.getElementById('imageContainer');
+                imageContainer.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                imageContainer.appendChild(img);
+                document.getElementById('addPictureLabel').style.display = 'none';
+                document.getElementById('textinfoJs').style.display = 'none';
+                document.getElementById('IconJs').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 });

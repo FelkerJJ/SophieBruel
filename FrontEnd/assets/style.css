@@ -487,9 +487,13 @@ h2 .fa-solid {
 	margin-top: 18%
 }
 
+.gallery-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .addPicture-button.active {
     background-color: #1D6154;
-;
 }
 
 
@@ -521,8 +525,16 @@ h2 .fa-solid {
 	border-radius: 2px;
 }
 
+.hidden-category {
+    display: none;
+}
+
 .image-container {
 	position: relative;
+}
+
+.gallery-item p {
+    margin-top: 3px;
 }
 
 .fa-trash-alt:before,

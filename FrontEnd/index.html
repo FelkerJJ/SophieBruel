@@ -10,12 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./assets/style.css">
-    <script src="/FrontEnd/assets/dataDisplay.js" defer></script>
-    <script src="/FrontEnd/assets/displayModal.js" defer></script>
+    <script src="/FrontEnd/assets/displayGallerieswithFilters.js" defer></script>
+    <script src="/FrontEnd/assets/displayFirstModal.js" defer></script>
     <script src="/FrontEnd/assets/login.js" defer></script>
-    <script src="/FrontEnd/assets/secondModal.js" defer></script>
-    <script src="/FrontEnd/assets/callCategories.js" defer></script>
-    <script src="/FrontEnd/assets/imageGalleryData.js" defer></script>
+    <script src="/FrontEnd/assets/displaySecondModal.js" defer></script>
+    <script src="/FrontEnd/assets/formDatawithGalleries.js" defer></script>
+    <script src="/FrontEnd/assets/pictureDatawithCategories.js" defer></script>
+
 </head>
 <body>
     <div class="editorbloc"> 
@@ -63,7 +64,7 @@
                     <button class="hotels" data-category-id="3">Hotels & restaurants</button>
                 </div>
             </div>
-            <div class="gallery">
+            <div class="gallery" id="gallery">
             </div>
         </section>
         <section id="contact">
@@ -87,8 +88,8 @@
                 </div>
                 <div id="mainContainer" class="mainContainer hidden first-modal">
                     <p id="modalTitle1">Galerie photo</p>
-                    <div class="modal-gallery">
-                        <div class="image-container"></div>
+                    <div class="modal-gallery" id="modalGallery">
+                        <div class="image-container" id="image-container"></div>
                     </div>
                 </div>
                 <form id="photoUploadForm" enctype="multipart/form-data">
