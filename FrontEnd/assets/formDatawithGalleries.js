@@ -1,11 +1,41 @@
+const photoInput = document.getElementById('photoInput');
+const titleInput = document.getElementById('titre');
+const categorySelect = document.getElementById('categorie');
+
+// Définir la fonction addPhotoToApi en dehors de la portée de DOMContentLoaded
+function addPhotoToApi() {
+    const file = photoInput.files[0];
+    const title = titleInput.value.trim();
+    const category = categorySelect.options[categorySelect.selectedIndex].text;
+
+    if (file && title && category) {
+        const formData = new FormData();
+        formData.append('photo', file);
+        formData.append('title', title);
+        formData.append('category', category);
+
+        fetch('http://localhost:5678/api/users/works', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json(); 
+            } else {
+                throw new Error('Erreur lors de l\'envoi des données');
+            }
+        })
+    }
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('photoUploadForm');
-    const photoInput = document.getElementById('photoInput');
-    const titleInput = document.getElementById('titre');
-    const categorySelect = document.getElementById('categorie');
     const addPhotoButton = document.getElementById('addPhotoButton');
     const gallery = document.querySelector('.gallery');
-    const modalGallery = document.querySelector('.modal-gallery .image-container');
 
     // Fonction pour vérifier la validité du formulaire
     function checkFormValidity() {
@@ -17,26 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
             addPhotoButton.classList.add('active');
         } else {
             addPhotoButton.classList.remove('active');
-        }
-    }
-
-    // Afficher un aperçu de l'image sélectionnée
-    function previewImage() {
-        const file = photoInput.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const imageUrl = e.target.result;
-                const imageContainer = document.getElementById('imageContainer');
-                imageContainer.innerHTML = '';
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                imageContainer.appendChild(img);
-                document.getElementById('addPictureLabel').style.display = 'none';
-                document.getElementById('textinfoJs').style.display = 'none';
-                document.getElementById('IconJs').style.display = 'none';
-            };
-            reader.readAsDataURL(file);
         }
     }
 
@@ -60,15 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <span class="hidden-category">${category}</span>
                                             </figcaption>`;
                 gallery.appendChild(galleryItem);
-
-                // Ajouter la photo à la galerie modale
-                const modalGalleryItem = document.createElement('figure');
-                modalGalleryItem.classList.add('modal-gallery-item');
-                modalGalleryItem.innerHTML = `<img src="${imageUrl}" alt="${title}">
-                                        <figcaption>
-                                            <p>${title}</p>
-                                            <span class="hidden-category">${category}</span>
-                                        </figcaption>`;
 
                 // Réinitialiser le formulaire
                 form.reset();
@@ -117,24 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                     <p>${title}</p>
                                     <span class="hidden-category">${category}</span>`;
             gallery.appendChild(galleryItem);
-
-            // Ajouter la photo à la galerie modale
-            const modalGalleryItem = document.createElement('div');
-            modalGalleryItem.classList.add('modal-gallery-item');
-            modalGalleryItem.innerHTML = `<img src="${imageUrl}" alt="${title}">
-                                          <p>${title}</p>
-                                          <span class="hidden-category">${category}</span>`;
         });
     }
 
     // Appel de la fonction pour afficher les images stockées lors du chargement de la page
     displayStoredImages();
 
-    // Ajouter des écouteurs d'événements pour vérifier la validité du formulaire et afficher l'aperçu de l'image
-    photoInput.addEventListener('change', () => {
-        checkFormValidity();
-        previewImage();
-    });
+    // Ajouter des écouteurs d'événements pour vérifier la validité du formulaire
+    photoInput.addEventListener('change', checkFormValidity);
     titleInput.addEventListener('input', checkFormValidity);
     categorySelect.addEventListener('change', checkFormValidity);
 });

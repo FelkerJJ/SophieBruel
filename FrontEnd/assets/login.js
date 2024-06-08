@@ -1,6 +1,27 @@
 // Vérifie si une session utilisateur est active
 const isSomeoneLoggedIn = getSession();
 
+// Effectue une requête "Post" et récupère les ID (Mdp + Login)
+async function login(email, password) {
+  const API_URL = "http://localhost:5678/api/users/login";
+
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    
+    return await response.json();
+
+  } catch (error) {
+    console.error("Erreur lors de la connexion:", error);
+    throw error;
+  }
+}
+
 if (isSomeoneLoggedIn) {
   const loginLink = document.getElementById("login-link");
 
@@ -31,27 +52,6 @@ if (isSomeoneLoggedIn) {
   }
 }
 
-// Effectue une requête "Post" et récupère les ID (Mdp + Login)
-async function login(email, password) {
-  const API_URL = "http://localhost:5678/api/users/login";
-
-  try {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    
-    return await response.json();
-
-  } catch (error) {
-    console.error("Erreur lors de la connexion:", error);
-    throw error;
-  }
-}
-
 // Enregistre les données de session utilisateur dans le stockage local
 function saveSession(userData) {
   localStorage.setItem('loggedInUser', JSON.stringify(userData));
@@ -75,7 +75,11 @@ function checkLogin() {
           alert('Erreur dans l’identifiant ou le mot de passe');
         }
       }
-    });
+    })
+      .catch(error => {
+        console.error("Erreur lors de l'authentification:", error);
+        // Gérer l'erreur d'authentification ici (par exemple, afficher un message d'erreur à l'utilisateur)
+      });
 }
 
 // Récupère les données de session utilisateur du stockage local

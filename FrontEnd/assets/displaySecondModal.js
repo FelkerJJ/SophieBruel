@@ -11,7 +11,6 @@ document.getElementById("addPhotoButton").addEventListener("click", function() {
     arrowLeftIcon.style.display = "block"; 
 });
 
-
 // Modifs ajoutées sur le bouton "Valider"
 const customCTAButton = document.getElementById("addPhotoButton");
 customCTAButton.addEventListener("click", function() {
@@ -40,7 +39,6 @@ function resetToGallery() {
 // Gestionnaire d'événement pour le reset "Galerie Photo" via ArrowLeft
 arrowLeftIcon.addEventListener("click", resetToGallery);
 
-
 // Gestionnaire d'événement pour ajouter une image sur le front
 document.getElementById("photoInput").addEventListener("change", function(event) {
     const file = event.target.files[0]; 
@@ -63,13 +61,29 @@ function afficherImage(imageUrl) {
     imageElement.src = imageUrl; 
     
     const imageContainer = document.getElementById("imageContainer"); 
-    imageContainer.innerHTML = ""; 
     imageContainer.appendChild(imageElement); 
+
+// Ajouter l'écouteur d'événements pour le bouton Ajouter une photo
+addPhotoButton.addEventListener('click', function () {
+    if (addPhotoButton.classList.contains('active')) {
+        const modalImageContainer = document.getElementById("modalGallery"); 
+        const modalImages = modalImageContainer.querySelectorAll('img');
+        const imageUrl = imageElement.src; 
+        const imageExists = Array.from(modalImages).some(img => img.src === imageUrl);
+
+        // Ajouter l'image uniquement si elle n'existe pas déjà dans la galerie modale
+        if (!imageExists) {
+            const modalImageElement = document.createElement("img"); 
+            modalImageElement.src = imageUrl; 
+            modalImageElement.alt = "Image"; 
+            modalImageContainer.appendChild(modalImageElement);
+        }
+    }
+});
 
     // Masquer les éléments spécifiés
     document.getElementById("addPictureLabel").style.display = "none";
     document.getElementById("textinfoJs").style.display = "none";
     document.getElementById("IconJs").style.display = "none";
-
 }
 
