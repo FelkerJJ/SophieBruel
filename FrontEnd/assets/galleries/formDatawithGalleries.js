@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fonction pour créer un FormData
     function createFormData(file, title, category) {
+        console.log('Création de FormData');
         const formData = new FormData();
         formData.append('image', file);
         formData.append('title', title);
@@ -17,25 +18,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fonction pour envoyer les données à l'API
     async function sendFormData(formData) {
-        const response = await fetch('http://localhost:5678/api/works', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4"
+        console.log('Envoi de FormData à l\'API');
+        const token = getSession(); 
+        console.log('Token de session:', token);
+        try {
+            const response = await fetch('http://localhost:5678/api/works', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    // 'Authorization': `Bearer ${token}`                
+                }
+            });
+
+            console.log('Réponse de l\'API:', response); 
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.log('Données reçues après le POST:', errorData);
+                throw new Error(`Erreur lors de l'envoi des données: ${response.statusText}`);
             }
-        });
 
-        if (!response.ok) {
-            throw new Error('Erreur lors de l\'envoi des données');
+            const data = await response.json();
+            console.log('Données reçues après le POST:', data);
+            return data;
+        } catch (error) {
+            throw error;
         }
-
-        const data = await response.json();
-        console.log('Données reçues après le POST:', data);
-        return data;
     }
 
     // Fonction pour vérifier la validité du formulaire
     function checkFormValidity() {
+        console.log('Vérification de la validité du formulaire');
         const isPhotoSelected = imageInput.files.length > 0;
         const isTitleFilled = titleInput.value.trim() !== '';
         const isCategorySelected = categorySelect.value !== '';
@@ -49,18 +62,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fonction pour ajouter la photo à la galerie et à l'API
     function addPhotoToGalleriesAndApi() {
+        console.log('Ajout de la photo à la galerie et à l\'API');
         const file = imageInput.files[0];
         const title = titleInput.value.trim();
         const category = categorySelect.options[categorySelect.selectedIndex].text;
 
+        const token = getSession();
+        if (!token) {
+            console.error('Utilisateur non connecté');
+            return;
+        }
+
         if (file && title && category) {
+            console.log('File:', file);
+            console.log('Title:', title);
+            console.log('Category:', category);
+
             const formData = createFormData(file, title, category);
+
+            console.log('FormData créé:', formData); 
 
             // Ajouter la photo à la galerie immédiatement
             const reader = new FileReader();
             reader.onload = function (e) {
                 const imageUrl = e.target.result;
-
                 const galleryItem = document.createElement('figure');
                 galleryItem.classList.add('gallery-item');
                 galleryItem.innerHTML = `<img src="${imageUrl}" alt="${title}">
@@ -79,16 +104,18 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             reader.readAsDataURL(file);
 
+            console.log('Envoi de FormData à l\'API...'); 
+
             // Envoyer les données à l'API
             sendFormData(formData)
                 .then(data => {
                     console.log('Succès:', data);
                 })
                 .catch(error => {
-                    console.error('Erreur lors de l\'envoi:', error);
+                    console.error('Erreur lors de l\'envoi des données à l\'API:', error);
                 });
         } else {
-            console.log('Missing file, title, or category');
+            console.log('Fichier, titre ou catégorie manquant');
         }
     }
 
@@ -102,3 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     titleInput.addEventListener('input', checkFormValidity);
     categorySelect.addEventListener('change', checkFormValidity);
 });
+
+function getSession() {
+    return localStorage.getItem('sessionToken');
+}

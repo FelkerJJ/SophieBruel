@@ -53,38 +53,38 @@ if (isSomeoneLoggedIn) {
 }
 
 // Enregistre les données de session utilisateur dans le stockage local
-function saveSession(userData) {
-  localStorage.setItem('loggedInUser', JSON.stringify(userData));
+function saveSession(token) {
+  localStorage.setItem('sessionToken', token);
 }
 
-// Vérifie les identifiants de connexion et redirige si la connexion est réussit
+// Fonction pour vérifier les identifiants de connexion et rediriger si la connexion réussit
 function checkLogin() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-  login(email, password)
-    .then((response) => {
-      if (response) {
-        if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
-          saveSession(response);
-          window.location.href = 'index.html';
-          document.getElementById("modeEdition").style.display = "block";
-          document.querySelector('.emptyBlocBis').style.display = "block";
-        }
-        else {
-          alert('Erreur dans l’identifiant ou le mot de passe');
-        }
-      }
-    })
-      .catch(error => {
-        console.error("Erreur lors de l'authentification:", error);
-        // Gérer l'erreur d'authentification ici (par exemple, afficher un message d'erreur à l'utilisateur)
-      });
+    login(email, password)
+        .then((response) => {
+            if (response && response.token) {
+                if (email === 'sophie.bluel@test.tld' && password === 'S0phie') {
+                    saveSession(response.token);
+                    window.location.href = 'index.html';
+                    document.getElementById("modeEdition").style.display = "block";
+                } else {
+                    alert('Erreur dans l’identifiant ou le mot de passe');
+                }
+            }
+        })
+        .catch(error => {
+            logError(error); // Ajouter l'erreur à la liste
+            console.error("Erreur lors de l'authentification:", error);
+            // Gérer l'erreur d'authentification ici (par exemple, afficher un message d'erreur à l'utilisateur)
+        });
 }
+
 
 // Récupère les données de session utilisateur du stockage local
-function getSession(userData) {
-  return localStorage.getItem('loggedInUser');
+function getSession() {
+  return localStorage.getItem('sessionToken');
 }
 
 // Gestionnaire d'événement pour la déconnexion
@@ -95,10 +95,4 @@ if (logoutLink) {
     localStorage.clear();
     window.location.href = 'login.html';
   });
-}
-
-// Récupère les données de session utilisateur du stockage local
-function getSession() {
-  const userData = localStorage.getItem('loggedInUser');
-  return userData ? JSON.parse(userData) : null;
-}
+}   
