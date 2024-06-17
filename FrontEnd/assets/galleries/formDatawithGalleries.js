@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Fonction pour vérifier la validité du formulaire
     function checkFormValidity() {
-        console.log('Vérification de la validité du formulaire');
+        // console.log('Vérification de la validité du formulaire');
         const isPhotoSelected = imageInput.files.length > 0;
         const isTitleFilled = titleInput.value.trim() !== '';
         const isCategorySelected = categorySelect.value !== '';
@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (file && title && category) {
-            console.log('File:', file);
-            console.log('Title:', title);
-            console.log('Category:', category);
+            // console.log('File:', file);
+            // console.log('Title:', title);
+            // console.log('Category:', category);
 
             const formData = createFormData(file, title, category);
 
@@ -103,8 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 addPhotoButton.classList.remove('active');
             };
             reader.readAsDataURL(file);
-
-            console.log('Envoi de FormData à l\'API...'); 
 
             // Envoyer les données à l'API
             sendFormData(formData)
