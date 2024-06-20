@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const addPhotoButton = document.getElementById('addPhotoButton');
     const gallery = document.querySelector('.gallery');
 
-    // Fonction pour créer un FormData
+    // Function to create FormData
     function createFormData(file, title, category) {
-        console.log('Création de FormData');
+        // console.log('Creating FormData');
         const formData = new FormData();
         formData.append('image', file);
         formData.append('title', title);
@@ -16,42 +16,35 @@ document.addEventListener('DOMContentLoaded', function () {
         return formData;
     }
 
-    // Fonction pour envoyer les données à l'API
+    // Function to send data to the API
     async function sendFormData(formData) {
-        console.log('Envoi de FormData à l\'API');
+        // console.log('Sending FormData to API');
         const token = getSession(); 
-        console.log('Token de session:', token);
+        // console.log('Session token:', token);
         try {
             const response = await fetch('http://localhost:5678/api/works', {
                 method: 'POST',
-                body: formData,
                 headers: {
-                    // 'Authorization': `Bearer ${token}`                
-                }
+                    'Authorization': `Bearer ${token}`                
+                },
+                body: formData,
             });
 
-            console.log('Réponse de l\'API:', response); 
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.log('Données reçues après le POST:', errorData);
-                throw new Error(`Erreur lors de l'envoi des données: ${response.statusText}`);
-            }
+            // console.log('API response:', response); 
 
             const data = await response.json();
-            console.log('Données reçues après le POST:', data);
+            // console.log('Data received after POST:', data);
             return data;
         } catch (error) {
             throw error;
         }
     }
 
-    // Fonction pour vérifier la validité du formulaire
+    // Function to check form validity
     function checkFormValidity() {
-        // console.log('Vérification de la validité du formulaire');
         const isPhotoSelected = imageInput.files.length > 0;
         const isTitleFilled = titleInput.value.trim() !== '';
-        const isCategorySelected = categorySelect.value !== '';
+        const isCategorySelected = categorySelect.value.trim() !== '';
 
         if (isPhotoSelected && isTitleFilled && isCategorySelected) {
             addPhotoButton.classList.add('active');
@@ -60,29 +53,25 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Fonction pour ajouter la photo à la galerie et à l'API
+    // Function to add photo to gallery and API
     function addPhotoToGalleriesAndApi() {
-        console.log('Ajout de la photo à la galerie et à l\'API');
+        // console.log('Adding photo to gallery and API');
         const file = imageInput.files[0];
         const title = titleInput.value.trim();
-        const category = categorySelect.options[categorySelect.selectedIndex].text;
+        const category = parseInt(categorySelect.value, 10); 
 
         const token = getSession();
         if (!token) {
-            console.error('Utilisateur non connecté');
+            console.error('User not logged in');
             return;
         }
 
-        if (file && title && category) {
-            // console.log('File:', file);
-            // console.log('Title:', title);
-            // console.log('Category:', category);
-
+        if (file && title && !isNaN(category)) {
             const formData = createFormData(file, title, category);
 
-            console.log('FormData créé:', formData); 
+            // console.log('Created FormData:', formData); 
 
-            // Ajouter la photo à la galerie immédiatement
+            // Add photo to gallery immediately
             const reader = new FileReader();
             reader.onload = function (e) {
                 const imageUrl = e.target.result;
@@ -92,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                         <figcaption>
                                             <p>${title}</p>
                                             <span class="hidden-category">${category}</span>
-                                            </figcaption>`;
+                                        </figcaption>`;
                 gallery.appendChild(galleryItem);
 
                 form.reset();
@@ -104,20 +93,21 @@ document.addEventListener('DOMContentLoaded', function () {
             };
             reader.readAsDataURL(file);
 
-            // Envoyer les données à l'API
+            // Send data to API
             sendFormData(formData)
                 .then(data => {
-                    console.log('Succès:', data);
+                    // console.log('Success:', data);
                 })
                 .catch(error => {
-                    console.error('Erreur lors de l\'envoi des données à l\'API:', error);
+                    console.error('Error sending data to API:', error);
                 });
         } else {
-            console.log('Fichier, titre ou catégorie manquant');
+            console.log('Missing file, title, or category');
         }
     }
 
-    addPhotoButton.addEventListener('click', function () {
+    addPhotoButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the page from reloading
         if (addPhotoButton.classList.contains('active')) {
             addPhotoToGalleriesAndApi();
         }
