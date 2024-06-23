@@ -549,7 +549,7 @@ h2 .fa-solid {
 #addPhotoForm {
     display: none;
     margin-left: 105px;
-    margin-top: 40px;
+    margin-top: 11px;
     width: min-content;
 }
 
@@ -590,6 +590,7 @@ h2 .fa-solid {
 	margin: auto;
 	border-radius: 3px 0px 0px 0px;
 	position: relative; 
+    bottom: 24px;
 }
 
 .IconCTA {
