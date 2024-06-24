@@ -512,25 +512,8 @@ h2 .fa-solid {
 	height: 102.57px;
 }
 
-.image-container i.fa-trash-can {
-	position: absolute;
-	top: 10px;
-	left: 53px;
-	width: 17px;
-	height: 17px;
-	right: 5px;
-	color: white;
-	background-color: black;
-	cursor: pointer;
-	border-radius: 2px;
-}
-
 .hidden-category {
     display: none;
-}
-
-.image-container {
-	position: relative;
 }
 
 .gallery-item p {
@@ -544,12 +527,14 @@ h2 .fa-solid {
 	font-size: 10px;
 	margin-bottom: 5px;
 	border-radius: 1px;
+	width: 9px;
+	height: 10.29px;
 }
 
 #addPhotoForm {
     display: none;
     margin-left: 105px;
-    margin-top: 11px;
+    margin-top: 40px;
     width: min-content;
 }
 
@@ -590,7 +575,6 @@ h2 .fa-solid {
 	margin: auto;
 	border-radius: 3px 0px 0px 0px;
 	position: relative; 
-    bottom: 24px;
 }
 
 .IconCTA {
@@ -694,14 +678,14 @@ h2 .fa-solid {
     position: relative;
     bottom: 20px;
     left: 50%;
-    top: 77px;
+	top: 83px;
     transform: translateX(-50%);
 }
 
 .elementCTA {
     background-color: gray;
-    margin-top: 38px;
-	height: 34px;
+    margin-top: 32px;
+    height: 34px;
 }
 
 .elementLign {
@@ -775,4 +759,22 @@ article {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 25px;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block; /* Ajustez selon vos besoins */
+}
+
+.fa-solid.fa-trash-can {
+    color: white; /* Exemple de couleur */
+	background-color: black;
+	position: absolute;
+    cursor: pointer; 
+	width: 17px;
+	height: 17px;
+    bottom: 77%;
+    left: 71%;
+	width: 17px;
+	border-radius: 2px 0px 0px 0px;
 }

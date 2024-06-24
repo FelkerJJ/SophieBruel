@@ -2,6 +2,8 @@
 const modal = document.getElementById("myModal");
 const modifierBtn = document.querySelector(".modifier-text");
 const closeSpan = document.querySelector(".close");
+const arrowLeftIcon = document.getElementById("arrowLeftIcon");
+const deleteButton = document.getElementById("sisilamif");
 
 // Masque l'icone arrow sur la première page modal "Galerie photo"
 arrowLeftIcon.style.display = "none";
@@ -25,3 +27,8 @@ window.onclick = function(event) {
   }
 }
 
+// Fonction pour réinitialiser la modale à la page "Galerie Photo"
+function resetToGallery() {
+  // Ajoutez ici la logique pour réinitialiser la modale à la galerie photo
+  // Par exemple, vous pouvez masquer des éléments ou réinitialiser des formulaires
+}
