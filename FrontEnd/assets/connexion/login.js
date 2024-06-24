@@ -71,16 +71,14 @@ function checkLogin() {
                     document.getElementById("modeEdition").style.display = "block";
                 } else {
                     alert('Erreur dans l’identifiant ou le mot de passe');
+                    console.log('Identifiant incorrect pour l’utilisateur:', email);
                 }
+            } else {
+                alert('Erreur dans l’identifiant ou le mot de passe');
+                console.log('Mot de passe incorrect pour l’utilisateur:', password);
             }
-        })
-        .catch(error => {
-            logError(error); // Ajouter l'erreur à la liste
-            console.error("Erreur lors de l'authentification:", error);
-            // Gérer l'erreur d'authentification ici (par exemple, afficher un message d'erreur à l'utilisateur)
         });
 }
-
 
 // Récupère les données de session utilisateur du stockage local
 function getSession() {

@@ -442,7 +442,7 @@ h2 .fa-solid {
     text-align: center;
     padding: 25px;
     margin-bottom: 15px;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .modal-input {
@@ -534,7 +534,7 @@ h2 .fa-solid {
 #addPhotoForm {
     display: none;
     margin-left: 105px;
-    margin-top: 40px;
+	margin-top: 10px;
     width: min-content;
 }
 
@@ -571,6 +571,7 @@ h2 .fa-solid {
 	background: #e8f1f6;
 	display: none;
 	width: 420px;
+	bottom: 24px;
 	height: 169px;
 	margin: auto;
 	border-radius: 3px 0px 0px 0px;
@@ -678,13 +679,13 @@ h2 .fa-solid {
     position: relative;
     bottom: 20px;
     left: 50%;
-	top: 83px;
+    top: 76px;
     transform: translateX(-50%);
 }
 
 .elementCTA {
     background-color: gray;
-    margin-top: 32px;
+    margin-top: 38px;
     height: 34px;
 }
 
@@ -692,7 +693,7 @@ h2 .fa-solid {
     border: 1px solid #b3b3b3;
     position: relative;
     bottom: 20px;
-    top: 10px;
+    top: 17px;
 }
 
 

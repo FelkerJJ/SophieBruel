@@ -20,6 +20,9 @@ customCTAButton.addEventListener("click", function() {
     document.querySelector(".ligne-modal").classList.add("elementLign");
 });
 
+// Gestionnaire d'événement pour le reset "Galerie Photo" via ArrowLeft
+arrowLeftIcon.addEventListener("click", resetToGallery);
+
 // Gestionnaire d'événement pour le retour "Galerie Photo" via ArrowLeft
 function resetToGallery() {
     document.getElementById("modalTitle1").textContent = "Galerie photo";
@@ -34,10 +37,8 @@ function resetToGallery() {
     document.querySelector(".mainContainer").style.bottom = "0px";
     document.querySelector(".close").style.top = "24px";
     arrowLeftIcon.style.display = "none";
+    document.getElementById("photoUploadForm").reset();
 }
-
-// Gestionnaire d'événement pour le reset "Galerie Photo" via ArrowLeft
-arrowLeftIcon.addEventListener("click", resetToGallery);
 
 // Gestionnaire d'événement pour ajouter une image sur le front
 document.getElementById("photoInput").addEventListener("change", function(event) {
