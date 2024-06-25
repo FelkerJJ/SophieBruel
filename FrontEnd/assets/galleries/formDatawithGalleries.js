@@ -58,23 +58,25 @@ document.addEventListener('DOMContentLoaded', function () {
         // console.log('Adding photo to gallery and API');
         const file = imageInput.files[0];
         const title = titleInput.value.trim();
-        const category = parseInt(categorySelect.value, 10); 
-
+        const category = parseInt(categorySelect.value, 10);
+    
         const token = getSession();
         if (!token) {
             console.error('User not logged in');
             return;
         }
-
+    
         if (file && title && !isNaN(category)) {
             const formData = createFormData(file, title, category);
-
-            // console.log('Created FormData:', formData); 
-
+    
+            // console.log('Created FormData:', formData);
+    
             // Add photo to gallery immediately
             const reader = new FileReader();
             reader.onload = function (e) {
                 const imageUrl = e.target.result;
+    
+                // Add to main gallery
                 const galleryItem = document.createElement('figure');
                 galleryItem.classList.add('gallery-item');
                 galleryItem.innerHTML = `<img src="${imageUrl}" alt="${title}">
@@ -82,7 +84,29 @@ document.addEventListener('DOMContentLoaded', function () {
                                             <p>${title}</p>
                                         </figcaption>`;
                 gallery.appendChild(galleryItem);
-
+    
+                // Add to modal gallery with trash icon
+                const modalGallery = document.querySelector('#modalGallery');
+                const modalImg = document.createElement('img');
+                modalImg.src = imageUrl;
+                modalImg.alt = title;
+    
+                const trashIcon = document.createElement('i');
+                trashIcon.classList.add('fa-solid', 'fa-trash-can');
+                trashIcon.dataset.itemId = 'new-image'; // Set a temporary ID or handle accordingly
+    
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+                imageContainer.dataset.itemId = 'new-image'; // Set a temporary ID or handle accordingly
+                imageContainer.appendChild(trashIcon);
+                imageContainer.appendChild(modalImg);
+                modalGallery.appendChild(imageContainer);
+    
+                trashIcon.addEventListener('click', function() {
+                    // Placeholder function for now
+                    console.log('Delete new image functionality not implemented yet.');
+                });
+    
                 form.reset();
                 document.getElementById('imageContainer').innerHTML = '';
                 document.getElementById('addPictureLabel').style.display = 'block';
@@ -91,11 +115,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 addPhotoButton.classList.remove('active');
             };
             reader.readAsDataURL(file);
-
+    
             // Send data to API
             sendFormData(formData)
                 .then(data => {
-                    // console.log('Success:', data);
+                    // Update the new image's dataset.itemId with the real ID from the API
+                    const newImageContainer = modalGallery.querySelector('[data-item-id="new-image"]');
+                    if (newImageContainer) {
+                        newImageContainer.dataset.itemId = data.id;
+                        newImageContainer.querySelector('i').dataset.itemId = data.id;
+                        newImageContainer.querySelector('i').addEventListener('click', function() {
+                            deleteImage(data.id, filteredWorks);
+                        });
+                    }
                 })
                 .catch(error => {
                     console.error('Error sending data to API:', error);
@@ -104,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Missing file, title, or category');
         }
     }
+    
 
     addPhotoButton.addEventListener('click', function (event) {
         event.preventDefault(); // Prevent the page from reloading
