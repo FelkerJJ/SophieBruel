@@ -42,7 +42,7 @@ function updateGalleries(filteredWorks) {
         mainGallery.appendChild(figure);
 
         // Ajouter uniquement l'image à la galerie modale (Galerie Photo)
-        const modalImg = img.cloneNode(true); // Définir modalImg ici
+        const modalImg = img.cloneNode(true); 
         modalGallery.appendChild(modalImg);
     });
 }
@@ -69,8 +69,6 @@ async function handleFilterClick(event) {
 async function retrieveDataAndUpdateGalleries() {
     // Call direct pour récupérer les données depuis l'API
     await fetchDataAndUpdateGalleries();
-    
-    // Ajouter les gestionnaires d'événements pour les filtres
     const filterButtons = document.querySelectorAll('.filters-button button');
     filterButtons.forEach(button => {
         button.addEventListener('click', handleFilterClick);

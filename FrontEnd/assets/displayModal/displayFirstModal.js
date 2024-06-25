@@ -26,9 +26,3 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-// Fonction pour réinitialiser la modale à la page "Galerie Photo"
-function resetToGallery() {
-  // Ajoutez ici la logique pour réinitialiser la modale à la galerie photo
-  // Par exemple, vous pouvez masquer des éléments ou réinitialiser des formulaires
-}

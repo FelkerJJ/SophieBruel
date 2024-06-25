@@ -82,7 +82,7 @@ addPhotoButton.addEventListener('click', function () {
     }
 });
 
-    // Masque les informations de la zone img dans la deuxième modal "Ajout Photo"
+// Masque les données de la zone img dans la deuxième modal "Ajout Photo"
     document.getElementById("addPictureLabel").style.display = "none";
     document.getElementById("textinfoJs").style.display = "none";
     document.getElementById("IconJs").style.display = "none";

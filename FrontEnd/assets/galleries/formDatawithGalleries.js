@@ -120,3 +120,5 @@ document.addEventListener('DOMContentLoaded', function () {
 function getSession() {
     return localStorage.getItem('sessionToken');
 }
+
+

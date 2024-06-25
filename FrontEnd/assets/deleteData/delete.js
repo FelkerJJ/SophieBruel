@@ -1,49 +1,4 @@
-//Start from here
-function updateGalleries(filteredWorks) {
-    const mainGallery = document.querySelector('.gallery');
-    const modalGallery = document.querySelector('#modalGallery');
-
-    mainGallery.innerHTML = '';
-    modalGallery.innerHTML = '';
-
-    filteredWorks.forEach(work => {
-        const figure = document.createElement('figure');
-
-        // Create an image
-        const img = document.createElement('img');
-        img.src = work.imageUrl;
-        img.alt = work.title;
-
-        // Create the figcaption for the image
-        const figcaption = document.createElement('figcaption');
-        figcaption.textContent = work.title;
-
-        // Add the image and figcaption to the figure
-        figure.appendChild(img);
-        figure.appendChild(figcaption);
-
-        // Add the figure to the main gallery
-        mainGallery.appendChild(figure);
-
-        // Add the image and the trash icon to the modal gallery
-        const modalImg = img.cloneNode(true); // Clone the main image
-        const trashIcon = document.createElement('i');
-        trashIcon.classList.add('fa-solid', 'fa-trash-can'); // Add classes for the trash icon
-        trashIcon.dataset.itemId = work.id; // Set the data-item-id attribute
-        const imageContainer = document.createElement('div');
-        imageContainer.classList.add('image-container');
-        imageContainer.appendChild(trashIcon);
-        imageContainer.appendChild(modalImg);
-        modalGallery.appendChild(imageContainer);
-
-        // Add event listener to delete the image on trash icon click
-        trashIcon.addEventListener('click', function() {
-            deleteImage(work.id);
-        });
-    });
-}
-
-
+// Requête "delete" à l'API 
 async function deleteImage(workId) {
     const token = getSession();
 
@@ -51,8 +6,6 @@ async function deleteImage(workId) {
         console.error('User not logged in');
         return;
     }
-
-    try {
         const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
             method: 'DELETE',
             headers: {
@@ -61,7 +14,6 @@ async function deleteImage(workId) {
         });
 
         if (response.ok) {
-            // Remove the image from the DOM
             const imageContainer = document.querySelector(`[data-item-id="${workId}"]`);
             if (imageContainer) {
                 imageContainer.parentElement.removeChild(imageContainer);
@@ -70,8 +22,51 @@ async function deleteImage(workId) {
             }
         } else {
             console.error('Failed to delete image');
-        }
-    } catch (error) {
-        console.error('Error deleting image:', error);
     }
+}
+
+
+function updateGalleries(filteredWorks) {
+    const mainGallery = document.querySelector('.gallery'); 
+    const modalGallery = document.querySelector('#modalGallery'); 
+
+    mainGallery.innerHTML = ''; 
+    modalGallery.innerHTML = ''; 
+
+    // Itère sur le tableau des œuvres filtrées
+    filteredWorks.forEach(work => {
+        const figure = document.createElement('figure'); 
+
+        // Crée un élément image pour la figure
+        const img = document.createElement('img');
+        img.src = work.imageUrl; // Définit l'URL source de l'image
+        img.alt = work.title; // Définit le texte alternatif de l'image
+
+        // Crée un élément figcaption pour l'image
+        const figcaption = document.createElement('figcaption');
+        figcaption.textContent = work.title; 
+
+        // Ajoute l'image et le figcaption à la figure
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+
+        // Ajoute la figure à la galerie principale
+        mainGallery.appendChild(figure);
+
+        // Ajoute l'image et l'icône de la corbeille à la galerie modale
+        const modalImg = img.cloneNode(true); 
+        const trashIcon = document.createElement('i');
+        trashIcon.classList.add('fa-solid', 'fa-trash-can'); // Ajoute des classes pour l'icône de la corbeille
+        trashIcon.dataset.itemId = work.id; // Définit l'attribut data-item-id avec l'ID de l'œuvre
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container'); 
+        imageContainer.appendChild(trashIcon); 
+        imageContainer.appendChild(modalImg); 
+        modalGallery.appendChild(imageContainer); 
+
+        // Ajoute un écouteur d'événements pour supprimer l'image lorsque l'icône de la corbeille est cliquée
+        trashIcon.addEventListener('click', function() {
+            deleteImage(work.id); 
+        });
+    });
 }
