@@ -18,6 +18,7 @@ customCTAButton.addEventListener("click", function() {
     customCTAButton.classList.add("elementCTA"); 
     customCTAButton.classList.add("elementLign"); 
     document.querySelector(".ligne-modal").classList.add("elementLign");
+    document.getElementById("addPhotoButton").value = "";
 });
 
 // Gestionnaire d'événement pour le reset "Galerie Photo" via ArrowLeft
@@ -29,6 +30,7 @@ function resetToGallery() {
     document.querySelector(".modal-gallery").style.display = "grid";
     document.getElementById("addPhotoForm").style.display = "none";
     document.getElementById("pictureBloc").style.display = "none";
+    document.getElementById("addPhotoButton").style.display = "none";
     customCTAButton.textContent = "Ajouter une photo"; 
     customCTAButton.style.display = "block"; 
     customCTAButton.classList.remove("elementCTA", "elementLign"); 
@@ -37,8 +39,25 @@ function resetToGallery() {
     document.querySelector(".mainContainer").style.bottom = "0px";
     document.querySelector(".close").style.top = "24px";
     arrowLeftIcon.style.display = "none";
-    document.getElementById("photoUploadForm").reset();
+    addPhotoButton.classList.remove('active');
+
+    // Réinitialiser l'image affichée sur le front-end
+    const imageContainer = document.getElementById("imageContainer");
+    imageContainer.innerHTML = ''; // Supprime l'image du conteneur
+
+    // Réinitialiser le champ de sélection de fichier
+    const photoInput = document.getElementById("photoInput");
+    photoInput.value = ''; // Efface le chemin du fichier sélectionné
+
+    // Réinitialiser les éléments associés à l'ajout d'image
+    document.getElementById("addPictureLabel").style.display = "block";
+    document.getElementById("textinfoJs").style.display = "block";
+    document.getElementById("IconJs").style.display = "block";
+    document.getElementById("titre").value = "";
+    document.getElementById("categorie").value = "";
 }
+
+
 
 // Gestionnaire d'événement pour ajouter une image sur le front
 document.getElementById("photoInput").addEventListener("change", function(event) {

@@ -29,6 +29,7 @@ function updateGalleries(filteredWorks) {
         const img = document.createElement('img');
         img.src = work.imageUrl;
         img.alt = work.title;
+        img.setAttribute('data-item-id', work.id); // Ajouter l'attribut data-item-id
 
         // Créer le figcaption pour l'image
         const figcaption = document.createElement('figcaption');

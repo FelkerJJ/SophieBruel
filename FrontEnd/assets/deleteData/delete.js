@@ -1,4 +1,4 @@
-async function deleteImage(workId, filteredWorks) {
+async function deleteImage(workId) {
     const token = getSession();
 
     if (!token) {
@@ -20,9 +20,6 @@ async function deleteImage(workId, filteredWorks) {
         } else {
             console.error('Image container not found');
         }
-        // Mettre à jour filteredWorks après suppression
-        const updatedWorks = filteredWorks.filter(work => work.id !== workId);
-        updateGalleries(updatedWorks);
     } else {
         console.error('Failed to delete image');
     }
@@ -61,8 +58,25 @@ function updateGalleries(filteredWorks) {
         imageContainer.appendChild(modalImg); 
         modalGallery.appendChild(imageContainer); 
 
-        trashIcon.addEventListener('click', function() {
-            deleteImage(work.id, filteredWorks); 
+        trashIcon.addEventListener('click', function(event) {
+            const workId = event.target.dataset.itemId; // Utiliser dataset.itemId pour récupérer workId
+            deleteImage(workId);
         });
     });
+}
+
+// Appel initial pour récupérer les données et mettre à jour les galeries au chargement de la page
+document.addEventListener('DOMContentLoaded', async () => {
+    await retrieveDataAndUpdateGalleries();
+});
+
+// Fonction pour récupérer les données depuis l'API et les mettre à jour
+async function retrieveDataAndUpdateGalleries() {
+    try {
+        const data = await getData();
+        allWorks = data;
+        updateGalleries(allWorks);
+    } catch (error) {
+        console.error('Erreur lors de la récupération des données:', error);
+    }
 }
