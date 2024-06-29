@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // y as un rôle dans les doublons ?
     addPhotoButton.addEventListener('click', function () {
         if (addPhotoButton.classList.contains('active')) {
             addPhotoToGalleriesAndApi();

@@ -23,30 +23,42 @@ function updateGalleries(filteredWorks) {
     modalGallery.innerHTML = '';
 
     filteredWorks.forEach(work => {
+        // Ajouter l'image à la galerie principale
         const figure = document.createElement('figure');
-
-        // Créer une image
         const img = document.createElement('img');
         img.src = work.imageUrl;
         img.alt = work.title;
-        img.setAttribute('data-item-id', work.id); // Ajouter l'attribut data-item-id
+        img.setAttribute('data-item-id', work.id);
 
-        // Créer le figcaption pour l'image
         const figcaption = document.createElement('figcaption');
         figcaption.textContent = work.title;
-
-        // Ajouter l'image et la figcaption à l'image
         figure.appendChild(img);
         figure.appendChild(figcaption);
-
-        // Ajouter l'image à la galerie principale
         mainGallery.appendChild(figure);
 
-        // Ajouter uniquement l'image à la galerie modale (Galerie Photo)
-        const modalImg = img.cloneNode(true); 
-        modalGallery.appendChild(modalImg);
+        // Ajouter l'image à la galerie modale avec l'icône de poubelle
+        const modalImg = document.createElement('img');
+        modalImg.src = work.imageUrl;
+        modalImg.alt = work.title;
+        modalImg.setAttribute('data-item-id', work.id);
+
+        const trashIcon = document.createElement('i');
+        trashIcon.classList.add('fa-solid', 'fa-trash-can');
+        trashIcon.dataset.itemId = work.id;
+
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+        imageContainer.dataset.itemId = work.id;
+        imageContainer.appendChild(trashIcon);
+        imageContainer.appendChild(modalImg);
+        modalGallery.appendChild(imageContainer);
+
+        trashIcon.addEventListener('click', function() {
+            deleteImage(work.id);
+        });
     });
 }
+
 
 // Fonction pour récupérer les données depuis l'API et les mettre à jour
 async function fetchDataAndUpdateGalleries() {

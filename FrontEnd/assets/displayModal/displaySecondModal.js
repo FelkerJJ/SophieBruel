@@ -90,14 +90,6 @@ addPhotoButton.addEventListener('click', function () {
         const modalImages = modalImageContainer.querySelectorAll('img');
         const imageUrl = imageElement.src; 
         const imageExists = Array.from(modalImages).some(img => img.src === imageUrl);
-
-        // Ajouter l'image uniquement si elle n'existe pas déjà dans la galerie modale
-        if (!imageExists) {
-            const modalImageElement = document.createElement("img"); 
-            modalImageElement.src = imageUrl; 
-            modalImageElement.alt = "Image"; 
-            modalImageContainer.appendChild(modalImageElement);
-        }
     }
 });
 

@@ -70,13 +70,3 @@ document.addEventListener('DOMContentLoaded', async () => {
     await retrieveDataAndUpdateGalleries();
 });
 
-// Fonction pour récupérer les données depuis l'API et les mettre à jour
-async function retrieveDataAndUpdateGalleries() {
-    try {
-        const data = await getData();
-        allWorks = data;
-        updateGalleries(allWorks);
-    } catch (error) {
-        console.error('Erreur lors de la récupération des données:', error);
-    }
-}
