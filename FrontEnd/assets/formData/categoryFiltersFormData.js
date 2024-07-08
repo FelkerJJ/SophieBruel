@@ -40,46 +40,5 @@ async function populateCategories() {
 
 document.addEventListener('DOMContentLoaded', function () {
     populateCategories();
-
-    const form = document.getElementById('photoUploadForm');
-    const photoInput = document.getElementById('photoInput');
-    const titleInput = document.getElementById('titre');
-    const categorySelect = document.getElementById('categorie');
-    const addPhotoButton = document.getElementById('addPhotoButton');
-
-    // Fonction pour vérifier la validité du formulaire
-    function checkFormValidity() {
-        const isPhotoSelected = photoInput.files.length > 0;
-        const isTitleFilled = titleInput.value.trim() !== '';
-        const isCategorySelected = categorySelect.value !== '';
-
-        if (isPhotoSelected && isTitleFilled && isCategorySelected) {
-            addPhotoButton.classList.add('active');
-        } else {
-            addPhotoButton.classList.remove('active');
-        }
-    }
-
-    // Afficher un aperçu de l'image sélectionnée
-    function previewImage() {
-        const file = photoInput.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const imageUrl = e.target.result;
-                const imageContainer = document.getElementById('imageContainer');
-                imageContainer.innerHTML = '';
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                imageContainer.appendChild(img);
-                document.getElementById('addPictureLabel').style.display = 'none';
-                document.getElementById('textinfoJs').style.display = 'none';
-                document.getElementById('IconJs').style.display = 'none';
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    // photoInput.addEventListener('change', previewImage);
-    form.addEventListener('input', checkFormValidity);
+    
 });
