@@ -52,7 +52,7 @@ if (isSomeoneLoggedIn) {
   }
 }
 
-// Enregistre les données de session utilisateur dans le stockage local
+// Enregistre les données de session utilisateur dans le stockage local (sans ça, impossible de log)
 function saveSession(token) {
   localStorage.setItem('sessionToken', token);
 }

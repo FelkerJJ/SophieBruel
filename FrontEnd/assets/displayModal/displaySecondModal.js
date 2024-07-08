@@ -11,7 +11,7 @@ document.getElementById("addPhotoButton").addEventListener("click", function() {
     arrowLeftIcon.style.display = "block"; 
 });
 
-// Modifs ajoutées sur le bouton "Valider"
+// Modifications ajoutées sur le bouton "Valider"
 const customCTAButton = document.getElementById("addPhotoButton");
 customCTAButton.addEventListener("click", function() {
     customCTAButton.textContent = "Valider"; 
@@ -56,8 +56,6 @@ function resetToGallery() {
     document.getElementById("titre").value = "";
     document.getElementById("categorie").value = "";
 }
-
-
 
 // Gestionnaire d'événement pour ajouter une image sur le front
 document.getElementById("photoInput").addEventListener("change", function(event) {

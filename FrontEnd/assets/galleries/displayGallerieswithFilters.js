@@ -1,7 +1,7 @@
-// Variables globales pour stocker les données
+// Variables globales pour stocker les données récupérées depuis l'API
 let allWorks = [];
 
-// Fonction pour récupérer les données depuis l'API ==> /works (Return all works)
+// Function pour récupérer les données depuis l'API ==> /works (Return all works)
 async function getData() {
     const response = await fetch('http://localhost:5678/api/works', {
         method: "GET",
@@ -13,16 +13,14 @@ async function getData() {
     return data;
 }
 
-// Fonction pour mettre à jour les galeries d'images
+// Function pour mettre à jour les galeries d'images avec les filtres demandés
 function updateGalleries(filteredWorks) {
     const mainGallery = document.querySelector('.gallery');
-    const modalGallery = document.querySelector('#modalGallery');
 
     mainGallery.innerHTML = '';
     modalGallery.innerHTML = '';
 
     filteredWorks.forEach(work => {
-        // Ajouter l'image à la galerie principale
         const figure = document.createElement('figure');
         const img = document.createElement('img');
         img.src = work.imageUrl;
@@ -35,7 +33,6 @@ function updateGalleries(filteredWorks) {
         figure.appendChild(figcaption);
         mainGallery.appendChild(figure);
 
-        // Ajouter l'image à la galerie modale avec l'icône de poubelle
         const modalImg = document.createElement('img');
         modalImg.src = work.imageUrl;
         modalImg.alt = work.title;
@@ -58,7 +55,7 @@ function updateGalleries(filteredWorks) {
     });
 }
 
-// Fonction pour récupérer les données depuis l'API et les mettre à jour
+// Function pour récupérer les données depuis l'API et les mettre à jour
 async function fetchDataAndUpdateGalleries() {
     try {
         const data = await getData();
@@ -70,7 +67,7 @@ async function fetchDataAndUpdateGalleries() {
     }
 }
 
-// Fonction pour récupérer les données et mettre à jour les galeries au chargement de la page
+// Function pour récupérer les données et mettre à jour les galeries au chargement de la page
 async function retrieveDataAndUpdateGalleries() {
     await fetchDataAndUpdateGalleries();
     const filterButtons = document.querySelectorAll('.filters-button button');
@@ -81,7 +78,13 @@ async function retrieveDataAndUpdateGalleries() {
 
 // Gestionnaire d'événements pour les filtres des catégories => Homepage/Mesprojets
 async function handleFilterClick(event) {
+
+    // Récupère l'identifiant de la catégorie du bouton cliqué
     const categoryID = event.target.dataset.categoryId;
+
+    // Filtre les images en fonction de la catégorie sélectionnée
     const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
+
+    // Update les galeries avec les images filtrées
     updateGalleries(filteredWorks);
 }

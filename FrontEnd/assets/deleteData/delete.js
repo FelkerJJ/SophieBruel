@@ -1,5 +1,7 @@
-// Fonction pour supprimer une image
+// Function async pour supprimer une image
 async function deleteImage(workId) {
+
+    // Fait appel à la function getSession (formDatawith Galleries.JS) pour récup le token
     const token = getSession();
 
     if (!token) {
@@ -15,21 +17,19 @@ async function deleteImage(workId) {
     });
 
     if (response.ok) {
-        // Supprimer l'image de la modale
-        const imageContainer = document.querySelector(`[data-item-id="${workId}"]`);
         if (imageContainer) {
         } else {
             console.error('Image container not found in modal');
         }
 
-        // Mettre à jour les galeries pour refléter avec la suppression
+        // Fait appel à la function fetchData... (displayGallerieswithFilters) pour update les galeries après la suppression
         await fetchDataAndUpdateGalleries();
     } else {
         console.error('Failed to delete image');
     }
 }
 
-// Appel initial pour récupérer les données et mettre à jour les galeries au chargement de la page
+// Appel initial pour récupérer les données et mettre à jour les galeries à la fin du chargement du DOM
 document.addEventListener('DOMContentLoaded', async () => {
     await retrieveDataAndUpdateGalleries();
 });

@@ -1,5 +1,5 @@
 // Variable vide pour stocker les données
-let categories = [];
+let fetchedcategories = [];
 
 async function getCategories() {
         const response = await fetch('http://localhost:5678/api/categories', {
@@ -15,9 +15,9 @@ async function getCategories() {
         return data;
 }
 
-// Fonction pour mettre à jour le menu déroulant des catégories du formulaire
+// Function pour mettre à jour le menu déroulant des catégories du formulaire
 async function populateCategories() {
-    categories = await getCategories();
+    fetchedcategories = await getCategories();
     const select = document.getElementById('categorie');
     const fragment = document.createDocumentFragment();
 
@@ -28,7 +28,7 @@ async function populateCategories() {
     fragment.appendChild(defaultOption);
 
     // Ajouter les options de catégories du formulaire
-    categories.forEach(category => {
+    fetchedcategories.forEach(category => {
         const option = document.createElement('option');
         option.value = category.id;
         option.textContent = category.name;

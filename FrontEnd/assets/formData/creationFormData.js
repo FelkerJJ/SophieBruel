@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const gallery = document.querySelector('.gallery');
     const modalGallery = document.querySelector('#modalGallery');
 
-    // Function to create FormData
+    // Function pour créer un objet FormData avec les données du formulaire
     function createFormData(file, title, category) {
         const formData = new FormData();
         formData.append('image', file);
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return formData;
     }
 
-    // Function to send data to the API
     async function sendFormData(formData) {
         const token = getSession();
         try {
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function to check form validity
+    // Function pour vérifier la validité du formulaire
     function checkFormValidity() {
         const isPhotoSelected = imageInput.files.length > 0;
         const isTitleFilled = titleInput.value.trim() !== '';
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function to add photo to gallery and API
+    // Function pour ajouter une photo aux galeries et à l'API
     function addPhotoToGalleriesAndApi() {
         const file = imageInput.files[0];
         const title = titleInput.value.trim();
@@ -59,17 +58,18 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
     
+        // Vérifie que le fichier, le titre et la catégorie sont valides
         if (file && title && !isNaN(category)) {
             const formData = createFormData(file, title, category);
 
             sendFormData(formData)
                 .then(data => {
-                    // Add photo to gallery only after receiving a successful response from the API
+                    // Ajoute la photo à la galerie principale après une réponse réussie de l'API                    
                     const reader = new FileReader();
                     reader.onload = function (e) {
                         const imageUrl = e.target.result;
 
-                        // Add to main gallery
+                        // Ajoute à la galerie principale
                         const galleryItem = document.createElement('figure');
                         galleryItem.classList.add('gallery-item');
                         galleryItem.innerHTML = `<img src="${imageUrl}" alt="${title}">
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                                 </figcaption>`;
                         gallery.appendChild(galleryItem);
 
-                        // Add to modal gallery with trash icon if not already added
+                        // Ajoute à la galerie modale l'icône poubelle
                         if (!modalGallery.querySelector(`[data-item-id="${data.id}"]`)) {
                             const modalImg = document.createElement('img');
                             modalImg.src = imageUrl;
@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         }
 
+                        // Réinitialise le formulaire et les éléments de l'interface utilisateur
                         form.reset();
                         document.getElementById('imageContainer').innerHTML = '';
                         document.getElementById('addPictureLabel').style.display = 'block';
@@ -117,13 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // y as un rôle dans les doublons ?
+    // Ajoute un gestionnaire d'événements au bouton d'ajout de photo
     addPhotoButton.addEventListener('click', function () {
         if (addPhotoButton.classList.contains('active')) {
             addPhotoToGalleriesAndApi();
         }
     });
 
+    // Ajoute des gestionnaires d'événements pour vérifier la validité du formulaire
     imageInput.addEventListener('change', checkFormValidity);
     titleInput.addEventListener('input', checkFormValidity);
     categorySelect.addEventListener('change', checkFormValidity);
