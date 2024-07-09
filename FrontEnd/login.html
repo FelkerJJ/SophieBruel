@@ -28,12 +28,19 @@
         </nav>
     </header>
     <main>
+
         <div class="group">
             <div class="login">
                 <h2>Log In</h2>
-                <h3>E-mail</h3><input type="email" id="email">
-                <h4>Mot de passe</h4><input type="password" id="password">
-                <button class="connexionbutton" onclick="checkLogin()">Se connecter</button>
+                <form id="loginForm">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <button type="submit" class="connexionbutton">Se connecter</button>
+                </form>
                 <a href="forgotpassword" class="forgot-password">Mot de passe oublié</a>
             </div>
         </div>

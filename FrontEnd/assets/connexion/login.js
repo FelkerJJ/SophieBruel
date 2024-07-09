@@ -29,8 +29,6 @@ if (isSomeoneLoggedIn) {
     document.getElementById('login-link').innerText = 'logout';
     document.getElementById('login-link').id = 'logout-link';
     document.getElementById('modeEdition').style.display = 'block';
-    document.querySelector('.filters-button').style.display = 'none';
-    document.getElementById('mainfiltersJs').style.marginBottom = "0px";
 
     // Affiche l'icône "fa-solid"
     const faSolidElements = document.querySelectorAll('h2 .fa-solid');
@@ -94,3 +92,8 @@ if (logoutLink) {
     window.location.href = 'login.html';
   });
 }   
+
+addEventListener('submit', function(event) {
+  event.preventDefault(); 
+  checkLogin();
+});

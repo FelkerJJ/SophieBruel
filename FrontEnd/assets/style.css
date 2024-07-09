@@ -235,10 +235,11 @@ input[type="submit"] {
 	display: none;
 }
 
-.all,
-.objects,
-.appartments,
-.hotels {
+.filters-list {
+	display: flex
+}
+
+.category-button {
 	border-radius: 25px;
 	padding: 10px 20px;
 	background-color: white;
@@ -251,29 +252,17 @@ input[type="submit"] {
 	font-family: Syne;
 }
 
-.all:hover,
-.objects:hover,
-.appartments:hover,
-.hotels:hover {
+.category-button:hover {
 	background-color: #1D6154; /* Changer la couleur de fond au survol */
 	color: white; /* Changer la couleur du texte au survol si nécessaire */
 }
 
-
-/* Connexion Page */
-.input {
-	width: 379px;
-	height: 51px;
-	top: 338px;
-	left: 530px;
-	gap: 0px;
-}
-
 .group {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	margin-bottom: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 62%;
+	position: relative;
 }
 
 h2 {
@@ -306,13 +295,21 @@ h4 {
 }
 
 .login {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    position: absolute;
+    align-items: center;
+    margin-top: 5%;
+}
+
+#loginForm label {
+	display: block;
+	margin-bottom: 8px;
 }
 
 input {
-	width: 417px;
+    width: 379px;
 	margin-bottom: 30px;
 	margin-top: 10px;
 	height: 51px;
@@ -324,24 +321,29 @@ input {
 }
 
 .connexionbutton {
-	border-radius: 25px;
-	padding: 10px 20px;
-	background-color: #1D6154;
-	color: white;
-	border: 1px solid #1D6154;
-	width: 179px;
-	height: 36px;
-	margin-bottom: 30px;
-	font-family: Syne;
-	font-size: 14px;
-	font-weight: 700;
-	line-height: 16.8px;
-	text-align: center;
+    border-radius: 25px;
+    padding: 10px 20px;
+    background-color: #1D6154;
+    color: white;
+    border: 1px solid #1D6154;
+    width: 179px;
+    height: 36px;
+    font-family: Syne;
+    font-size: 14px;
+    line-height: 16.8px;
+    left: 103px;
+    position: relative;
+    margin-top: 10px;
 }
 
+
+
 .forgot-password {
-	color: #3D3D3D;
-	font-weight: bold;
+    color: #3D3D3D;
+    font-weight: bold;
+    top: 365px;
+    position: absolute;
+    right: 40px;
 }
 
 
@@ -445,12 +447,21 @@ h2 .fa-solid {
     padding-top: 10px;
 }
 
+.input {
+	width: 379px;
+	height: 51px;
+	top: 338px;
+	left: 530px;
+	gap: 0px;
+}
+
 .modal-input {
     padding: 20px;
     box-sizing: border-box;
     color: #444444;
     font-family: Work Sans;
     font-size: 14px;
+    width: 417px;
 }
 
 .close:hover,
@@ -725,7 +736,8 @@ footer {
     height: 60px;
     flex-direction: row;
     justify-content: center;
-	margin-top: 20px;
+    bottom: 5px;
+    width: 100%;
 }
 
 .footerMain {

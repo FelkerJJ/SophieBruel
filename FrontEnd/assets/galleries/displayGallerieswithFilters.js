@@ -16,6 +16,7 @@ async function getData() {
 // Function pour mettre à jour les galeries d'images avec les filtres demandés
 function updateGalleries(filteredWorks) {
     const mainGallery = document.querySelector('.gallery');
+    const modalGallery = document.querySelector('.modal-gallery');
 
     mainGallery.innerHTML = '';
     modalGallery.innerHTML = '';
@@ -60,11 +61,94 @@ async function fetchDataAndUpdateGalleries() {
     try {
         const data = await getData();
         allWorks = data;
-        console.log(allWorks); 
+        // console.log(allWorks); 
         updateGalleries(allWorks);
+
+        // Collecte des catégories uniques à partir des données
+        const uniqueCategories = new Set();
+        allWorks.forEach(work => uniqueCategories.add(work.categoryId));
+
+        // Sélectionne l'élément pour les boutons de filtre
+        const filtersList = document.querySelector('.filters-list');
+
+        // Nettoyer les anciennes catégories avant d'ajouter de nouvelles
+        filtersList.innerHTML = '';
+
+        // Ajouter le bouton "Tous" s'il n'existe pas encore
+        if (!filtersList.querySelector('[data-category-id="all"]')) {
+            const allButton = document.createElement('button');
+            allButton.classList.add('category-button');
+            allButton.textContent = 'Tous';
+            allButton.dataset.categoryId = 'all';
+            const listItem = document.createElement('li');
+            listItem.appendChild(allButton);
+            filtersList.appendChild(listItem);
+        }
+
+        // Ajouter les catégories filtrées aux boutons de filtre
+        uniqueCategories.forEach(categoryId => {
+            const button = document.createElement('button');
+            button.classList.add('category-button');
+            button.textContent = getCategoryName(categoryId);
+            button.dataset.categoryId = categoryId;
+            const listItem = document.createElement('li');
+            
+            listItem.appendChild(button);
+            filtersList.appendChild(listItem);
+        });
+
+        // Ajoute les écouteurs d'événements aux nouveaux boutons
+        const filterButtons = document.querySelectorAll('.category-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', handleFilterClick);
+        });
+
     } catch (error) {
         console.error('Erreur lors de la récupération des données:', error);
     }
+}
+
+function getCategoryName(categoryId) {
+    switch (categoryId) {
+        case 1:
+            return "Objets";
+        case 2:
+            return "Appartements";
+        case 3:
+            return "Hotels & restaurants";
+        default:
+            return "Inconnu";
+    }
+}
+
+// Function pour supprimer une image
+async function deleteImage(imageId) {
+    try {
+        // Code pour supprimer l'image dans votre backend/API
+        const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+
+        if (response.ok) {
+            // Après suppression, mettre à jour les galeries et les catégories
+            await fetchDataAndUpdateGalleries();
+        } else {
+            console.error('Erreur lors de la suppression de l\'image:', response.statusText);
+        }
+
+    } catch (error) {
+        console.error('Erreur lors de la suppression de l\'image:', error);
+    }
+}
+
+// Gestionnaire d'événements pour les filtres des catégories
+async function handleFilterClick(event) {
+    const categoryId = event.target.dataset.categoryId;
+    const filteredWorks = (categoryId === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryId);
+    updateGalleries(filteredWorks);
 }
 
 // Function pour récupérer les données et mettre à jour les galeries au chargement de la page
@@ -76,15 +160,5 @@ async function retrieveDataAndUpdateGalleries() {
     });
 }
 
-// Gestionnaire d'événements pour les filtres des catégories => Homepage/Mesprojets
-async function handleFilterClick(event) {
-
-    // Récupère l'identifiant de la catégorie du bouton cliqué
-    const categoryID = event.target.dataset.categoryId;
-
-    // Filtre les images en fonction de la catégorie sélectionnée
-    const filteredWorks = (categoryID === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryID);
-
-    // Update les galeries avec les images filtrées
-    updateGalleries(filteredWorks);
-}
+// Au chargement de la page, récupère les données et met à jour les galeries
+document.addEventListener('DOMContentLoaded', retrieveDataAndUpdateGalleries);
