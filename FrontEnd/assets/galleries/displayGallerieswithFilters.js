@@ -61,7 +61,6 @@ async function fetchDataAndUpdateGalleries() {
     try {
         const data = await getData();
         allWorks = data;
-        // console.log(allWorks); 
         updateGalleries(allWorks);
 
         // Collecte des catégories uniques à partir des données
@@ -112,35 +111,12 @@ function getCategoryName(categoryId) {
     switch (categoryId) {
         case 1:
             return "Objets";
-        case 2:
-            return "Appartements";
         case 3:
+            return "Appartements"; 
+        case 2:
             return "Hotels & restaurants";
         default:
             return "Inconnu";
-    }
-}
-
-// Function pour supprimer une image
-async function deleteImage(imageId) {
-    try {
-        // Code pour supprimer l'image dans votre backend/API
-        const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        });
-
-        if (response.ok) {
-            // Après suppression, mettre à jour les galeries et les catégories
-            await fetchDataAndUpdateGalleries();
-        } else {
-            console.error('Erreur lors de la suppression de l\'image:', response.statusText);
-        }
-
-    } catch (error) {
-        console.error('Erreur lors de la suppression de l\'image:', error);
     }
 }
 
