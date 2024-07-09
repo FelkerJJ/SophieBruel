@@ -40,5 +40,4 @@ async function populateCategories() {
 
 document.addEventListener('DOMContentLoaded', function () {
     populateCategories();
-    
 });
