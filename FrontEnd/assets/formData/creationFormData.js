@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addPhotoButton = document.getElementById('addPhotoButton');
     const gallery = document.querySelector('.gallery');
     const modalGallery = document.querySelector('#modalGallery');
+    const modal = document.getElementById('myModal'); // Assurez-vous que l'ID de la modale est 'myModal'
 
     // Function pour créer un objet FormData avec les données du formulaire
     function createFormData(file, title, category) {
@@ -107,6 +108,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         document.getElementById('textinfoJs').style.display = 'block';
                         document.getElementById('IconJs').style.display = 'block';
                         addPhotoButton.classList.remove('active');
+
+                        // Ferme la modale après l'ajout de la photo
+                        closeModal();
                     };
                     reader.readAsDataURL(file);
                 })
@@ -116,6 +120,11 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log('Missing file, title, or category');
         }
+    }
+
+    // Function pour fermer la modale
+    function closeModal() {
+        modal.style.display = 'none';
     }
 
     // Ajoute un gestionnaire d'événements au bouton d'ajout de photo

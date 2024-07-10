@@ -244,7 +244,7 @@ input[type="submit"] {
 	padding: 10px 20px;
 	background-color: white;
 	color: #1D6154;
-	border: 1px solid #1D6154; /* Utilisation des valeurs par défaut */
+	border: 1px solid #1D6154; 
 	margin-right: 10px;
 	margin-left: 10px;
 	font-size: 16px;
@@ -252,9 +252,9 @@ input[type="submit"] {
 	font-family: Syne;
 }
 
-.category-button:hover {
-	background-color: #1D6154; /* Changer la couleur de fond au survol */
-	color: white; /* Changer la couleur du texte au survol si nécessaire */
+.category-button.active {
+	background-color: #1D6154;
+	color: white;
 }
 
 .group {

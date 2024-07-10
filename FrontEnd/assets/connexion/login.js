@@ -29,7 +29,10 @@ if (isSomeoneLoggedIn) {
     document.getElementById('login-link').innerText = 'logout';
     document.getElementById('login-link').id = 'logout-link';
     document.getElementById('modeEdition').style.display = 'block';
+    document.getElementById('filters-button').style.display = 'none';
+    document.querySelector(".mainfilters").style.height = "0px";
 
+    
     // Affiche l'icône "fa-solid"
     const faSolidElements = document.querySelectorAll('h2 .fa-solid');
     faSolidElements.forEach(element => {

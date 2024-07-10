@@ -39,8 +39,8 @@ function resetToGallery() {
     document.querySelector(".mainContainer").style.bottom = "0px";
     document.querySelector(".close").style.top = "24px";
     arrowLeftIcon.style.display = "none";
-    addPhotoButton.classList.remove('active');
-
+    customCTAButton.classList.remove('active');
+    
     // Réinitialiser l'image affichée sur le front-end
     const imageContainer = document.getElementById("imageContainer");
     imageContainer.innerHTML = ''; // Supprime l'image du conteneur

@@ -1,6 +1,3 @@
-// Variables globales pour stocker les données récupérées depuis l'API
-let allWorks = [];
-
 // Function pour récupérer les données depuis l'API ==> /works (Return all works)
 async function getData() {
     const response = await fetch('http://localhost:5678/api/works', {
@@ -125,6 +122,13 @@ async function handleFilterClick(event) {
     const categoryId = event.target.dataset.categoryId;
     const filteredWorks = (categoryId === "all") ? allWorks : allWorks.filter(work => work.categoryId == categoryId);
     updateGalleries(filteredWorks);
+
+    // Retirer la classe 'active' de tous les boutons
+    const filterButtons = document.querySelectorAll('.category-button');
+    filterButtons.forEach(button => button.classList.remove('active'));
+
+    // Ajouter la classe 'active' au bouton cliqué
+    event.target.classList.add('active');
 }
 
 // Function pour récupérer les données et mettre à jour les galeries au chargement de la page

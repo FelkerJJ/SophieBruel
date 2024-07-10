@@ -10,6 +10,7 @@ arrowLeftIcon.style.display = "none";
 
 // Ajoute un gestionnaire d'événement pour le bouton "modifier"
 modifierBtn.onclick = function() {
+  resetToGallery();
   modal.style.display = "block";
 }
 
