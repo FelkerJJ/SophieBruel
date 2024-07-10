@@ -7,6 +7,7 @@ async function getData() {
         }
     });
     const data = await response.json();
+    // console.log('Données récupérées depuis l\'API:', data); // Log des données récupérées
     return data;
 }
 
